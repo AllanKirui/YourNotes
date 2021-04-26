@@ -1,0 +1,280 @@
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+}
+
+:root {
+   --primary-color: #161719;
+   --secondary-color: #fef8ec;
+   --success-color: #00c168;
+   --error-color: #c10032;
+   --check-color: #00c168;
+   --delete-color: #e6021f;
+}
+
+body {
+   font-family: "Mulish", sans-serif;
+   background: var(--secondary-color);
+   color: var(--primary-color);
+}
+
+span.text-bold,
+small.text-bold {
+   font-weight: 700;
+}
+
+.hide {
+   display: none !important;
+}
+
+/* Logo & Greeting Styles */
+.menu-container {
+   width: 80%;
+   min-height: 43vh;
+   margin-top: 50px;
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+   text-align: center;
+   /* background-color: tomato; */
+}
+
+.logo img {
+   width: 100px;
+   margin-top: 10px;
+}
+
+.logo h1 {
+   font-size: 64px;
+}
+
+.logo p {
+   font-size: 14px;
+   font-style: italic;
+}
+
+.home-buttons {
+   width: 40%;
+   margin: 10px auto;
+   display: flex;
+   justify-content: space-around;
+}
+
+.home-buttons button {
+   width: 125px;
+   height: 35px;
+   border: 1px solid var(--primary-color);
+   border-radius: 4px;
+   outline: none;
+   font-size: 16px;
+   font-weight: 500;
+   background-color: var(--secondary-color);
+   transition: 0.3s ease-in;
+}
+
+.home-buttons button:hover {
+   transition: 0.3s ease-in;
+   cursor: pointer;
+   background-color: var(--primary-color);
+   color: var(--secondary-color);
+}
+
+.greeting h1 {
+   font-size: 20px;
+   font-weight: 400;
+}
+
+/* Login and Registration Setup */
+.register-div form,
+.login-div form {
+   width: 370px;
+   padding: 20px;
+   /* background: burlywood; */
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+.register-div form label,
+.login-div form label {
+   font-size: 15px;
+   font-weight: bold;
+}
+
+.register-div form input,
+.login-div form input {
+   margin-top: 5px;
+   width: 330px;
+   height: 32px;
+   outline: none;
+   border: 1px solid var(--primary-color);
+   border-radius: 4px;
+   font-size: 16px;
+   padding-left: 10px;
+   background-color: var(--secondary-color);
+   transition: 0.2s ease-in;
+}
+
+.register-div form input:hover,
+.register-div form input:focus,
+.login-div form input:hover,
+.login-div form input:focus {
+   background-color: #fbd0da;
+}
+
+.register-div .width-50 {
+   display: flex;
+   justify-content: space-between;
+}
+
+.register-div .input-50-first input,
+.register-div .input-50-last input {
+   width: 160px;
+}
+
+.register-div .checkbox-div {
+   display: flex;
+   margin-top: 5px;
+   /* width: 330px; */
+   justify-content: center;
+   align-items: center;
+   /* background: tomato; */
+}
+
+.register-div .checkbox-div input[type="checkbox"] {
+   margin: 0;
+   width: 15px;
+   height: 15px;
+   cursor: pointer;
+}
+
+.register-div .checkbox-div label {
+   margin-left: 20px;
+   font-size: 14px;
+   font-weight: 500;
+}
+
+.register-div form input[type="submit"],
+.login-div form input[type="submit"] {
+   width: 330px;
+   height: 35px;
+   outline: none;
+   font-size: 16px;
+   font-weight: 500;
+   border: 1px solid var(--primary-color);
+   border-radius: 4px;
+   background-color: var(--secondary-color);
+   transition: 0.3s ease-in;
+}
+
+.register-div form input[type="submit"]:hover,
+.login-div form input[type="submit"]:hover {
+   cursor: pointer;
+   background-color: var(--primary-color);
+   color: var(--secondary-color);
+}
+
+.register-div form p,
+.login-div form p {
+   font-size: 14px;
+   text-align: center;
+   margin-top: 15px;
+}
+
+/* Error Icons and Error Message */
+.form-control {
+   margin-bottom: 10px;
+   /* background: burlywood; */
+   position: relative;
+}
+
+.form-control img {
+   width: 15px;
+   position: absolute;
+   top: 33px;
+   right: 27px;
+   visibility: hidden;
+}
+
+.form-control .checkbox-div {
+   position: relative;
+}
+
+.form-control.checkbox-div img {
+   position: absolute;
+   top: 25px;
+   right: 20px;
+}
+
+.form-control.checkbox-div small {
+   position: absolute;
+   top: 25px;
+   left: 45px;
+}
+
+.form-control.success input {
+   border: 1px solid var(--success-color);
+}
+
+.form-control.error input {
+   border: 1px solid var(--error-color);
+}
+
+.form-control.success img.check {
+   visibility: visible;
+}
+
+.form-control.success img.cross {
+   visibility: visible;
+}
+
+.form-control.error small {
+   visibility: visible;
+   color: var(--error-color);
+}
+
+.login-error {
+   position: relative;
+   visibility: hidden;
+}
+
+.login-error img {
+   width: 15px;
+   position: absolute;
+   right: 15px;
+   top: 4px;
+}
+
+.login-error small {
+   font-weight: bold;
+   font-size: 14px;
+}
+
+.login-error.error img.cross {
+   visibility: visible;
+}
+
+.login-error.error small {
+   visibility: visible;
+   color: var(--error-color);
+}
+
+/* Successful SignUp Message */
+.success-div {
+   width: 80%;
+   margin: auto;
+   padding-top: 20px;
+   font-size: 16px;
+   font-weight: 500;
+   text-align: center;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+.success-div p {
+   padding-bottom: 20px;
+}
