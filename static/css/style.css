@@ -29,15 +29,14 @@ small.text-bold {
 }
 
 /* Logo & Greeting Styles */
-.menu-container {
+.menu-div {
    width: 80%;
-   min-height: 43vh;
+   min-height: 40vh;
    margin-top: 50px;
    position: absolute;
    left: 50%;
    transform: translateX(-50%);
    text-align: center;
-   /* background-color: tomato; */
 }
 
 .logo img {
@@ -55,14 +54,14 @@ small.text-bold {
 }
 
 .home-buttons {
-   width: 40%;
+   max-width: 300px;
    margin: 10px auto;
    display: flex;
    justify-content: space-around;
 }
 
 .home-buttons button {
-   width: 125px;
+   width: 120px;
    height: 35px;
    border: 1px solid var(--primary-color);
    border-radius: 4px;
@@ -80,6 +79,11 @@ small.text-bold {
    color: var(--secondary-color);
 }
 
+.active-button {
+   background-color: var(--primary-color) !important;
+   color: var(--secondary-color);
+}
+
 .greeting h1 {
    font-size: 20px;
    font-weight: 400;
@@ -90,9 +94,8 @@ small.text-bold {
 .login-div form {
    width: 370px;
    padding: 20px;
-   /* background: burlywood; */
    position: absolute;
-   top: 50%;
+   top: 47%;
    left: 50%;
    transform: translateX(-50%);
 }
@@ -198,8 +201,15 @@ small.text-bold {
    visibility: hidden;
 }
 
-.form-control .checkbox-div {
-   position: relative;
+/* .form-control .checkbox-div {
+   /* position: relative;
+} */
+
+.form-control small {
+   /* position: absolute;
+   top: 60px; */
+   font-weight: bold;
+   visibility: hidden;
 }
 
 .form-control.checkbox-div img {
@@ -278,3 +288,67 @@ small.text-bold {
 .success-div p {
    padding-bottom: 20px;
 }
+
+/* Dashboard */
+.dashboard {
+   width: 80%;
+   min-height: 100%;
+   background: #fff2d7;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translateX(-50%);
+   display: flex;
+}
+
+.dashboard .nav {
+   position: absolute;
+   background: var(--primary-color);
+   width: 60px;
+   height: 100%;
+}
+
+.dashboard .nav .house,
+.dashboard .nav .gears,
+.dashboard .nav .exit,
+.dashboard .nav p {
+   position: absolute;
+   text-align: center;
+   cursor: pointer;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+.dashboard .nav .house img,
+.dashboard .nav .gears img,
+.dashboard .nav .exit img {
+   width: 25px;
+}
+
+.dashboard .nav .house {
+   top: 5%;
+}
+
+.dashboard .nav .gears {
+   top: 15%;
+}
+
+.dashboard .nav .exit {
+   top: 90%;
+}
+
+.dashboard .nav p {
+   color: var(--secondary-color);
+   font-size: 14px;
+   opacity: 0;
+   transition: opacity 0.2s ease-in;
+}
+
+.dashboard .nav .house:hover p,
+.dashboard .nav .gears:hover p,
+.dashboard .nav .exit:hover p {
+   visibility: visible;
+   opacity: 1;
+}
+
+/* Dashboard Home */

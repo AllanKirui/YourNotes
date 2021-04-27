@@ -14,14 +14,14 @@
    </head>
    <body>
       <!-- Homepage: Menu -->
-      <div class="menu-container">
+      <div class="menu-div">
          <div class="logo" id="logo">
             <img src="static/img/quill.png" alt="A quill drawing a line" />
             <h1>Your Notes</h1>
             <p>put it down on digital paper</p>
          </div>
 
-         <div class="home-buttons" id="home-buttons">
+         <div class="home-buttons hide" id="home-buttons">
             <button id="register-btn">Register</button>
             <button id="login-btn">Login</button>
          </div>
@@ -129,7 +129,7 @@
       </div>
 
       <!-- Homepage: Login -->
-      <div class="login-div" id="login-div">
+      <div class="login-div hide" id="login-div">
          <form id="login-form" novalidate>
             <!-- Username -->
             <div class="form-control" id="login-username-input">
@@ -170,6 +170,24 @@
             Click on the <span class="text-bold">Login</span> button above to
             login in to your account
          </p>
+      </div>
+
+      <!-- Dashboard -->
+      <div class="dashboard hide" id="dashboard-div">
+         <div class="nav">
+            <div class="house" id="dash-home">
+               <img src="static/img/house.png" alt="" />
+               <p>home</p>
+            </div>
+            <div class="gears" id="dash-settings">
+               <img src="static/img/gears.png" alt="" />
+               <p>settings</p>
+            </div>
+            <div class="exit" id="dash-logout">
+               <img src="static/img/exit_door.png" alt="" />
+               <p>logout</p>
+            </div>
+         </div>
       </div>
    </body>
 </html>
