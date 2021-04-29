@@ -2,40 +2,47 @@
 let database_list = [];
 let user_logged_in = null;
 let username_logged_in = null;
-//notes previously called: selected list
-let selected_notes = null;
+//notes_list previously called: selected list
+let notes_list = null;
 
 // Grab elements
 const home_buttons_div = document.getElementById("home-buttons");
 const greeting_div = document.getElementById("greeting");
 const register_div = document.getElementById("register-div");
 const login_div = document.getElementById("login-div");
-const success_div = document.getElementById("success-div");
 const dashboard_div = document.getElementById("dashboard-div");
+const dashboard_home = document.getElementById("dashboard-home");
+const dashboard_notes = document.getElementById("dashboard-notes");
+const dashboard_settings = document.getElementById("dashboard-settings");
+const welcome_screen = document.getElementById("welcome-screen");
+const notes_overview = document.getElementById("notes-overview");
 
 const register_button = document.getElementById("register-btn");
 const login_button = document.getElementById("login-btn");
 const register_form = document.getElementById("register-form");
+const login_form = document.getElementById("login-form");
+const home_button = document.getElementById("dash-home");
+const settings_button = document.getElementById("dash-settings");
+const logout_button = document.getElementById("dash-logout");
 
+const heading = document.getElementById("heading");
+const write_form = document.getElementById("write-notes-form");
+const settings_form = document.getElementById("settings-form");
+
+// A. Set up validation for registration form
 // Setup Event Listeners
 register_button.addEventListener("click", () => {
-   login_button.classList.remove("active-btn");
-   register_button.classList.add("active-btn");
+   login_button.classList.remove("active-button");
+   register_button.classList.add("active-button");
 
    login_div.classList.add("hide");
    register_div.classList.remove("hide");
 
-   success_div.classList.add("hide");
+   // success_div.classList.add("hide");
 });
 
 register_form.addEventListener("submit", function (e) {
    e.preventDefault();
-   // check_reg_inputs();
-   // });
-
-   // A. Perform Form Registration Form
-   // // Define a function that validates input from the user
-   // function check_reg_inputs() {
    // Grab the registration form and it's input elements
    const first_name = document.getElementById("first-name");
    const last_name = document.getElementById("last-name");
@@ -55,23 +62,7 @@ register_form.addEventListener("submit", function (e) {
    const checkbox_value = checkbox.checked;
    // console.log(this);
 
-   // const first_name = this.querySelector("#first-name").value.trim();
-   // const last_name = this.querySelector("#last-name").value.trim();
-   // const reg_username = this.querySelector("#reg-username").value.trim();
-   // const reg_email = this.querySelector("#reg-email").value.trim();
-   // const reg_password = this.querySelector("#reg-password").value.trim();
-   // const reg_password2 = this.querySelector("#reg-password2").value.trim();
-   // const checkbox = this.querySelector("#checkbox").value.trim();
-
    let active_error = true;
-   let is_user_valid = true;
-   //    let valid_fname;
-   //    let valid_lname;
-   //    let valid_username;
-   //    let valid_email;
-   //    let valid_password;
-   //    let valid_password2;
-   //    let valid_check;
 
    // Check if first_name value is empty
    if (first_name_value === "") {
@@ -159,30 +150,15 @@ register_form.addEventListener("submit", function (e) {
       active_error = false;
    }
 
-   // Check if the add_user function returns false
-   //    if (
-   //       add_user(
-   //          valid_fname,
-   //          valid_lname,
-   //          valid_username,
-   //          valid_email,
-   //          valid_password,
-   //          valid_password2,
-   //          valid_check
-   //       ) !== false
-   //    ) {
-   //       set_error_state(reg_username, "Username has already been taken");
-   //    } else {
-   //       // Add the valid_users list to local storage
-   //       localStorage.setItem("Valid Users List", JSON.stringify(valid_users));
-   //    }
+   // Check if user already exists
    for (const user of database_list) {
       if (user.user.username === reg_username_value) {
          set_error_state(reg_username, "Username has already been taken");
          active_error = true;
       }
    }
-   // Check if there is an active error before adding the user to local storage
+
+   // Check if all form fields have been filled
    if (
       first_name_value !== undefined &&
       first_name_value !== "" &&
@@ -192,10 +168,10 @@ register_form.addEventListener("submit", function (e) {
       reg_username_value !== "" &&
       reg_email_value !== undefined &&
       reg_email_value !== "" &&
-      password_value !== undefined &&
-      password_value !== "" &&
-      password2_value !== undefined &&
-      password2_value !== "" &&
+      reg_password_value !== undefined &&
+      reg_password_value !== "" &&
+      reg_password2_value !== undefined &&
+      reg_password2_value !== "" &&
       checkbox_value === true
    ) {
       const new_user = add_user(
@@ -205,13 +181,223 @@ register_form.addEventListener("submit", function (e) {
       );
       add_to_valid_users(new_user);
       log_in_user(new_user);
+      register_button.classList.remove("active-button");
       register_form.reset();
-   } else {
-      set_error_state(reg_username, "Username has already been taken");
    }
 });
 
-// C. Other functions called throughout the program
+// B. Set up validation for login form
+// Setup event listeners
+login_button.addEventListener("click", () => {
+   register_button.classList.remove("active-button");
+   login_button.classList.add("active-button");
+
+   register_div.classList.add("hide");
+   login_div.classList.remove("hide");
+
+   // success_div.classList.add("hide");
+});
+
+login_form.addEventListener("submit", function (e) {
+   e.preventDefault();
+   // Grab the login form and it's input elements
+   const login_username = document.getElementById("login-username");
+   const login_password = document.getElementById("login-password");
+
+   // trim the values to remove whitespaces
+   const login_username_value = login_username.value.trim();
+   const login_password_value = login_password.value.trim();
+
+   login_button.classList.remove("active-button");
+   is_user_valid(login_username_value, login_password_value);
+});
+
+// C. Add functionality to dashboard buttons
+// Setup event listeners
+home_button.addEventListener("click", (e) => {
+   e.preventDefault();
+   dashboard_notes.classList.add("hide");
+   dashboard_settings.classList.add("hide");
+   show_dashboard(user_logged_in);
+});
+
+settings_button.addEventListener("click", (e) => {
+   e.preventDefault();
+   dashboard_home.classList.add("hide");
+   dashboard_notes.classList.add("hide");
+   show_user_settings();
+});
+
+logout_button.addEventListener("click", (e) => {
+   e.preventDefault();
+   log_out_user();
+});
+
+// D. Other main operations of the notes app
+// Show notes when the user clicks on a title in the overview
+notes_overview_todos = dashboard_home.querySelector("ul");
+notes_overview_todos.addEventListener("click", (e) => {
+   e.preventDefault();
+
+   if (e.target.nodeName !== "LI") {
+      return;
+   }
+
+   show_notes(e.target.innerText);
+});
+
+// Mark a notes item as completed
+const todo = document.querySelectorAll(".todo");
+for (let i = 0; i < todo.length; i++) {
+   strike_btn[i].addEventListener("click", () => {
+      todo[i].classList.toggle("completed");
+
+      update_stored_notes();
+   });
+}
+
+// Define a function that updates the notes stored in local storage
+function update_stored_notes() {
+   //new_notes_list/newselectedlist
+   let new_notes_list = [];
+
+   for (const notes of todo.querySelectorAll("li")) {
+      // item/notes donestatus/is_compplete
+      let is_complete = notes.className === "completed" ? true : false;
+
+      // updateditem/updated notes
+      let updated_notes = {
+         content: notes.innerText,
+         status: is_complete,
+      };
+
+      new_notes_list.push(updated_notes);
+   }
+
+   notes_list.notes = new_notes_list;
+   save_notes();
+}
+
+// Add notes to notes list
+write_form.addEventListener("submit", (e) => {
+   e.preventDefault();
+
+   const notes_to_write = document.getElementById("todo-input").value;
+   if (notes_to_write === "") {
+      return;
+   }
+
+   const notes_title = document.getElementById("notes-title").innerText;
+   if (notes_title === "New notes") {
+      set_error_state(heading, "Please rename the notes title");
+      return;
+   }
+
+   // Store the content of the notes to the list
+   notes_list.notes.push({ content: notes_to_write, status: false });
+   console.log("Notes list:", notes_list.notes);
+
+   // Add notes to the todo list
+   add_notes(notes_to_write);
+   e.target.reset();
+
+   save_notes();
+});
+
+// Define a function to write notes
+function add_notes(notes_to_write) {
+   const new_div = document.createElement("div");
+   new_div.classList.add("todo");
+
+   const new_li = document.createElement("li");
+   new_li.classList.add("bullet");
+   new_li.innerText = notes_to_write;
+
+   const button_div = document.createElement("div");
+   button_div.classList.add("notes-buttons");
+
+   const strike_div = document.createElement("div");
+   strike_div.classList.add("strike");
+   strike_div.innerHTML = '<img src="static/img/strike.png"/>';
+
+   const trash_div = document.createElement("div");
+   trash_div.classList.add("trash");
+   trash_div.innerHTML = '<img src="static/img/trash.png"/>';
+
+   button_div.appendChild(strike_div);
+   button_div.appendChild(trash_div);
+   new_div.appendChild(new_li);
+   new_div.appendChild(button_div);
+   todo_list.appendChild(new_div);
+}
+
+// Add functionality to rename notes
+const current_title = document.getElementById("notes-title");
+current_title.addEventListener("submit", (e) => {
+   e.preventDefault();
+   const new_notes_title = document.getElementById("notes-title").value;
+
+   if (new_notes_title === "") {
+      set_error_state(heading, "The notes title cannot be empty");
+   }
+
+   if (new_notes_title === "New notes") {
+      set_error_state(heading, "Please rename the notes title");
+   }
+
+   if (
+      is_title_unique(new_notes_title) &&
+      new_notes_title !== notes_list.notes_title
+   ) {
+      set_error_state(heading, "A notes title should be unique");
+   }
+
+   const current_notes_title = document.getElementById("notes-title");
+   current_notes_title.innerText = new_notes_title;
+
+   // If user creates new notes, store it
+   if (notes_list === null) {
+      const new_notes = {
+         notes_title: new_notes_title,
+         notes_content: [],
+      };
+
+      user_logged_in.notes.push(new_notes);
+      notes_list = new_notes;
+   } else {
+      notes_list.notes_title = new_notes_title;
+   }
+
+   save_notes();
+});
+
+// E. Add functionality to the settings pages
+settings_form.addEventListener("submit", (e) => {
+   e.preventDefault();
+
+   let new_username = document.getElementById("new-username").value;
+   // let new_password = document.getElementById("new-password").value;
+   let new_password = document.getElementById("conf-new-password").value;
+
+   user_logged_in.user.username = new_username;
+   user_logged_in.user.password = new_password;
+   username_logged_in = new_username;
+
+   if (new_password !== "") {
+      user_logged_in.user.password = new_password;
+   }
+
+   clear_password_fields();
+
+   save_data();
+});
+
+function clear_password_fields() {
+   document.getElementById("new-password").value = "";
+   document.getElementById("conf-new-password").value = "";
+}
+
+// F. Other functions called throughout the program
 // Define a function to store the user to the local storage database
 function add_user(first, username, password) {
    const new_user = {
@@ -228,6 +414,7 @@ function add_user(first, username, password) {
    return new_user;
 }
 
+// Define a function to check if the user is logged in or not
 function check_user_info() {
    if (user_logged_in === null) {
       log_out_user();
@@ -244,9 +431,12 @@ function log_in_user(user) {
 
    user_logged_in = user;
    username_logged_in = user.user.username;
+   // console.log(user);
+   // console.log(user.user);
+   // console.log(user.user.username);
    hide_divs();
-   show_greeting(hour, user);
-   show_dashboard();
+   show_greeting(hour, user.user.username);
+   show_dashboard(user);
 
    save_data();
 }
@@ -255,30 +445,57 @@ function log_in_user(user) {
 function log_out_user() {
    user_logged_in = null;
    username_logged_in = null;
-   notes = null;
+   notes_list = null;
    hide_divs();
+   hide_greeting();
    show_home_huttons();
 
    save_data();
 }
-// Define a function to hide divs
-function hide_divs() {
-   home_buttons_div.classList.add("hide");
-   register_div.classList.add("hide");
-   login_div.classList.add("hide");
-   dashboard_div.classList.add("hide");
-   dashboard_div.classList.add("hide");
-   // listDiv.classList.add("hide");   CALL THIS NOTES DIV
-   // settingsDiv.classList.add("hide");
+
+// Define a function to check if the user is in the database
+function is_user_valid(username, password) {
+   for (const user of database_list) {
+      if (user.user.username === username && user.user.password === password) {
+         //   if (user.user.username === username && user.user.password === hashCode(password)) {
+         hideAllErrors();
+         loginUser(user);
+         return;
+      }
+   }
+
+   const error_div = document.getElementById("login-error");
+   set_error_state(
+      error_div,
+      "Oops! No match found for the Username or Password"
+   );
 }
+
+// Define a function to show the notes the user chooses to see
+function show_notes(notes_title) {
+   if (notes_title === undefined) {
+      notes_title = "New notes";
+   }
+
+   show_dashboard_notes(notes_title);
+   dashboard_notes.getElementsByTagName("h3")[0].innerText = new_title;
+   dashboard_notes.getElementById("rename-input").value = new_title;
+}
+
 // Define a function to hide the login and register buttons
 function show_home_huttons() {
    home_buttons_div.classList.remove("hide");
 }
 
 // Define a function to show the dashboard once the user is logged in
-function show_dashboard() {
+function show_dashboard(user) {
    dashboard_div.classList.remove("hide");
+   console.log("Length of user notes list", user.notes.length);
+   // if (user.notes.length === 0) {
+   //    dashboard_home.classList.remove("hide");
+   //    welcome_screen.classList.remove("hide");
+   // }
+   show_notes_overview();
 
    //    const todoListUL = document.getElementById("dashboard-todo-lists");
    //    todoListUL.innerHTML = "";
@@ -294,10 +511,113 @@ function show_dashboard() {
    //    }
 }
 
+// Define a function to show the create notes section of the dashboard
+function show_dashboard_notes(notes_title) {
+   dashboard_notes.classList.remove("hide");
+
+   sort_user_notes(notes_title);
+}
+
+// Define a function that sorts the notes
+function sort_user_notes(title) {
+   for (const notes of user_logged_in.notes) {
+      if (notes.notes_title === title) {
+         show_notes_content(notes.notes_content);
+         notes_list = notes;
+         return;
+      }
+   }
+
+   show_notes_content(null);
+}
+
+// Define a function that shows a notes contents
+function show_notes_contents(note_items) {
+   const todo_list = document.getElementById("todo-list");
+
+   //    const todoItemsUL = document.getElementById("todo-list-items");
+   //   todoItemsUL.innerHTML = "";
+
+   //   if (items === null) {
+   //     return;
+   //   }
+
+   if (note_items === null) {
+      return;
+   }
+
+   // for (const listItem of items) {
+   //    const newItem = document.createElement("li");
+   //    newItem.innerText = listItem.text;
+   //    if (listItem.done) {
+   //       newItem.classList.add("done");
+   //    }
+   //    todoItemsUL.append(newItem);
+   // }
+
+   for (const content of note_items) {
+      const new_div = document.createElement("div");
+      new_div.classList.add("todo");
+
+      const new_li = document.createElement("li");
+      new_li.classList.add("bullet");
+      new_li.innerText = content.text;
+
+      const button_div = document.createElement("div");
+      button_div.classList.add("notes-buttons");
+
+      const strike_div = document.createElement("div");
+      strike_div.classList.add("strike");
+      strike_div.innerHTML = '<img src="static/img/strike.png"/>';
+
+      const trash_div = document.createElement("div");
+      trash_div.classList.add("trash");
+      trash_div.innerHTML = '<img src="static/img/trash.png"/>';
+
+      // Check if content was marked as complete
+      if (content.complete) {
+         new_li.classList.add("completed");
+      }
+
+      button_div.appendChild(strike_div);
+      button_div.appendChild(trash_div);
+      new_div.appendChild(new_li);
+      new_div.appendChild(button_div);
+      todo_list.appendChild(new_div);
+   }
+}
+
+// Define a function to allow the user to change their settings
+function show_user_settings() {
+   dashboard_settings.classList.remove("hide");
+
+   const settings_username = document.getElementById("new-username");
+   settings_username.value = user_logged_in.user.username;
+}
+
 // Define a function to save data to localStorage
 function save_data() {
    localStorage.setItem("Database", JSON.stringify(database_list));
    localStorage.setItem("Valid Users", JSON.stringify(username_logged_in));
+}
+
+// Define a function to read data from localStorage
+function read_data() {
+   if (localStorage.getItem("database_list")) {
+      database_list = JSON.parse(localStorage.getItem("database_list"));
+   }
+
+   if (localStorage.getItem("username_logged_in")) {
+      username_logged_in = JSON.parse(
+         localStorage.getItem("username_logged_in")
+      );
+
+      for (const user of database_list) {
+         if (user.user.username === username_logged_in) {
+            user_logged_in = user;
+         }
+      }
+   }
 }
 
 // Define a function to show the user a greeting based on the time of day
@@ -326,6 +646,11 @@ function show_greeting(time, username) {
    greeting_div.innerHTML = greeting;
 }
 
+// Define a function to hide the greeting when user is logged out
+function hide_greeting() {
+   greeting_div.classList.add("hide");
+}
+
 // Define a function that will show the error message and error state
 function set_error_state(input, message) {
    const control_el = input.parentElement;
@@ -333,7 +658,6 @@ function set_error_state(input, message) {
    small_el.innerText = message;
 
    control_el.classList.add("error");
-   control_el.style.marginBottom = "15px";
 }
 
 // Define a function that will show success state
@@ -342,7 +666,6 @@ function set_success_state(input) {
 
    control_el.classList.remove("error");
    control_el.classList.add("success");
-   control_el.style.marginBottom = "0px";
 }
 
 // Define a function that checks if email is valid
@@ -358,8 +681,14 @@ function remove_states(input) {
    setTimeout(() => {
       control_el.classList.remove("error");
       control_el.classList.remove("success");
+      control_el.style.marginBottom = "0px";
    }, 1000);
 }
+
+// Define a function to show the user a successful sign up message
+// function show_success_message() {
+//    success_div.classList.remove("hide");
+// }
 
 // Define a function that adds the user to the database
 function add_to_valid_users(user) {
@@ -367,4 +696,52 @@ function add_to_valid_users(user) {
    save_data();
 }
 
-check_user_info();
+// Define a function to show overview of notes already stored
+function show_notes_overview() {
+   dashboard_home.classList.remove("hide");
+   notes_overview.classList.remove("hide");
+
+   const ul_el = document.getElementById("overview-list");
+   // ul_elL.innerHTML = "";
+
+   for (const notes of user_logged_in.notes) {
+      const new_li = document.createElement("li");
+      new_li.innerText = notes.notes_title + " ";
+
+      const new_span = document.createElement("span");
+      new_span.innerText = notes.notes_items.length;
+
+      new_li.appendChild(new_span);
+      ul_el.appendChild(new_li);
+   }
+}
+
+// Define a function that checks if title of notes is unique
+function is_title_unique(title) {
+   for (const notes of user_logged_in.notes) {
+      if (notes.notes_title === title) {
+         return true;
+      }
+      return false;
+   }
+}
+
+// Define a function to hide divs
+function hide_divs() {
+   home_buttons_div.classList.add("hide");
+   register_div.classList.add("hide");
+   login_div.classList.add("hide");
+   dashboard_div.classList.add("hide");
+   // dashboard_div.classList.add("hide");
+   // listDiv.classList.add("hide");   CALL THIS NOTES DIV
+   // settingsDiv.classList.add("hide");
+}
+
+// Define a function to load the app
+function start_app() {
+   read_data();
+   check_user_info();
+}
+
+// Call the function to start app
+start_app();

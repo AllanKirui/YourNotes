@@ -39,6 +39,10 @@ small.text-bold {
    text-align: center;
 }
 
+.menu-div .logo {
+   margin-bottom: 20px;
+}
+
 .logo img {
    width: 100px;
    margin-top: 10px;
@@ -54,14 +58,14 @@ small.text-bold {
 }
 
 .home-buttons {
-   max-width: 300px;
+   max-width: 400px;
    margin: 10px auto;
    display: flex;
    justify-content: space-around;
 }
 
 .home-buttons button {
-   width: 120px;
+   width: 125px;
    height: 35px;
    border: 1px solid var(--primary-color);
    border-radius: 4px;
@@ -85,6 +89,7 @@ small.text-bold {
 }
 
 .greeting h1 {
+   margin-top: 10px;
    font-size: 20px;
    font-weight: 400;
 }
@@ -95,7 +100,7 @@ small.text-bold {
    width: 370px;
    padding: 20px;
    position: absolute;
-   top: 47%;
+   top: 50%;
    left: 50%;
    transform: translateX(-50%);
 }
@@ -189,7 +194,6 @@ small.text-bold {
 /* Error Icons and Error Message */
 .form-control {
    margin-bottom: 10px;
-   /* background: burlywood; */
    position: relative;
 }
 
@@ -201,14 +205,11 @@ small.text-bold {
    visibility: hidden;
 }
 
-/* .form-control .checkbox-div {
-   /* position: relative;
-} */
-
 .form-control small {
-   /* position: absolute;
-   top: 60px; */
-   font-weight: bold;
+   position: absolute;
+   top: 60px;
+   /* font-weight: bold; */
+   /* margin-top: 0; */
    visibility: hidden;
 }
 
@@ -236,7 +237,7 @@ small.text-bold {
    visibility: visible;
 }
 
-.form-control.success img.cross {
+.form-control.error img.cross {
    visibility: visible;
 }
 
@@ -258,7 +259,7 @@ small.text-bold {
 }
 
 .login-error small {
-   font-weight: bold;
+   /* font-weight: bold; */
    font-size: 14px;
 }
 
@@ -272,7 +273,7 @@ small.text-bold {
 }
 
 /* Successful SignUp Message */
-.success-div {
+/* .success-div {
    width: 80%;
    margin: auto;
    padding-top: 20px;
@@ -287,7 +288,7 @@ small.text-bold {
 
 .success-div p {
    padding-bottom: 20px;
-}
+} */
 
 /* Dashboard */
 .dashboard {
@@ -295,7 +296,7 @@ small.text-bold {
    min-height: 100%;
    background: #fff2d7;
    position: absolute;
-   top: 50%;
+   top: 47%;
    left: 50%;
    transform: translateX(-50%);
    display: flex;
@@ -352,3 +353,262 @@ small.text-bold {
 }
 
 /* Dashboard Home */
+.dashboard .dashboard-home {
+   position: absolute;
+   top: 4%;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+.dashboard .dashboard-home h1,
+.dashboard .dashboard-notes h1,
+.dashboard .dashboard-settings h1 {
+   font-size: 28px;
+   font-weight: 400;
+   text-align: center;
+}
+
+.dashboard .dashboard-home p {
+   font-size: 16px;
+   line-height: 30px;
+}
+
+.dashboard .dashboard-home .intro {
+   margin-top: 100px;
+   text-align: center;
+}
+
+.dashboard .dashboard-home .welcome-screen button {
+   margin-top: 50px;
+   width: 35%;
+   height: 32px;
+   border: 1px solid var(--primary-color);
+   border-radius: 4px;
+   outline: none;
+   font-size: 16px;
+   font-weight: 500;
+   background-color: #fff2d7;
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+}
+
+.dashboard .dashboard-home button:hover {
+   transition: 0.3s ease-in;
+   cursor: pointer;
+   background-color: var(--primary-color);
+   color: var(--secondary-color);
+}
+
+/* Dashboard Notes */
+.dashboard .dashboard-notes {
+   margin-left: 50%;
+   transform: translateX(-50%);
+}
+
+.notes-container {
+   margin: 20px auto;
+   padding: 10px;
+   width: 40vw;
+}
+
+.notes-container .heading small {
+   visibility: hidden;
+}
+
+.notes-container .heading small.error {
+   visibility: visible;
+   color: var(--error-color);
+}
+
+.notes-container form {
+   margin-bottom: 10px;
+}
+
+.notes-container form input {
+   width: 322px;
+   height: 32px;
+   padding-left: 10px;
+   border: none;
+   outline: none;
+   margin-bottom: 10px;
+   font-size: 14px;
+   background: #fef8ec;
+   color: var(--primary-color);
+}
+
+.notes-container form input#rename-input {
+   font-size: 18px;
+}
+
+.notes-container form button {
+   width: 110px;
+   height: 32px;
+   border-radius: 4px;
+   border: none;
+   outline: none;
+   background: var(--primary-color);
+   color: #fef8ec;
+   font-size: 13px;
+   cursor: pointer;
+   transition: 0.3s ease-in;
+}
+
+.notes-container form button:hover {
+   border: 1px solid var(--primary-color);
+   background: #fef8ec;
+   color: var(--primary-color);
+}
+
+.notes-container .todo-container {
+   margin-top: 30px;
+}
+
+.notes-container .todo-container .todo-list .todo {
+   min-height: 30px;
+   margin-bottom: 10px;
+   background-color: #fef8ec;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.notes-container .todo-container .todo-list li {
+   width: 82%;
+   margin-left: 20px;
+   font-size: 15px;
+   padding: 5px;
+   list-style: none;
+   margin-left: 5px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
+.notes-container .todo-container .todo-list li:hover {
+   height: auto;
+   white-space: normal;
+   overflow: auto;
+}
+
+.notes-container .todo-container .todo-list li.bullet {
+   background: url("/static/img/bullet2.png") no-repeat left;
+   padding-left: 25px;
+}
+
+.completed {
+   text-decoration: line-through;
+   opacity: 0.5;
+}
+
+.notes-container .todo-list .todo .notes-buttons {
+   width: 18%;
+   display: flex;
+   justify-content: space-between;
+}
+
+.notes-container .todo-list .todo .strike,
+.notes-container .todo-list .todo .trash {
+   min-height: 30px;
+   border-radius: 4px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+   transition: 0.3s ease-in;
+}
+
+.notes-container .todo-list .todo .strike {
+   right: -7%;
+   width: 8%;
+}
+
+.notes-container .todo-list .todo .trash {
+   right: -16%;
+   width: 8%;
+}
+
+.notes-container .todo-list .todo .strike {
+   width: 45%;
+   background-color: var(--primary-color);
+}
+
+.notes-container .todo-list .todo .strike:hover {
+   background-color: var(--check-color);
+}
+
+.notes-container .todo-list .todo .trash {
+   width: 45%;
+   background: var(--primary-color);
+}
+
+.notes-container .todo-list .todo .trash:hover {
+   background-color: var(--delete-color);
+}
+
+/* Dashboard Settings */
+.dashboard .dashboard-settings {
+   margin-top: 35px;
+   margin-left: 50%;
+   transform: translateX(-50%);
+}
+
+.settings-container {
+   margin-top: 20px;
+}
+
+.settings-container .heading {
+   padding: 20px;
+}
+
+.settings-container .heading h3 {
+   font-weight: 500;
+}
+
+.settings-container form {
+   padding: 0 20px 20px 20px;
+}
+
+.settings-container form label {
+   font-size: 15px;
+   font-weight: bold;
+}
+
+.settings-container form input {
+   margin-top: 5px;
+   width: 100%;
+   height: 32px;
+   outline: none;
+   border: none;
+   border-radius: 4px;
+   font-size: 16px;
+   padding-left: 10px;
+   background-color: var(--secondary-color);
+   transition: 0.2s ease-in;
+}
+
+.settings-container form input:hover,
+.settings-container form input:focus {
+   background-color: #fbd0da;
+}
+
+.settings-container form input[type="submit"] {
+   margin-top: 10px;
+   height: 35px;
+   outline: none;
+   border: none;
+   border-radius: 4px;
+   font-size: 14px;
+   letter-spacing: 0.5px;
+   background-color: var(--secondary-color);
+   transition: 0.3s ease-in;
+}
+
+.settings-container form input[type="submit"]:hover {
+   cursor: pointer;
+   background-color: var(--primary-color);
+   color: var(--secondary-color);
+}

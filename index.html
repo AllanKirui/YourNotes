@@ -26,9 +26,7 @@
             <button id="login-btn">Login</button>
          </div>
 
-         <div class="greeting hide" id="greeting">
-            <h1>Good afternoon, <span class="text-bold">Username</span></h1>
-         </div>
+         <div class="greeting hide" id="greeting"></div>
       </div>
 
       <!-- Homepage: Register -->
@@ -164,13 +162,13 @@
       </div>
 
       <!-- Homepage: Successful Signup -->
-      <div class="success-div hide" id="success-div">
+      <!-- <div class="success-div hide" id="success-div">
          <p>Thank you for registering <span class="text-bold">:)</span></p>
          <p>
             Click on the <span class="text-bold">Login</span> button above to
             login in to your account
          </p>
-      </div>
+      </div> -->
 
       <!-- Dashboard -->
       <div class="dashboard hide" id="dashboard-div">
@@ -187,6 +185,119 @@
                <img src="static/img/exit_door.png" alt="" />
                <p>logout</p>
             </div>
+         </div>
+
+         <!-- Dashboard: Home -->
+         <div class="dashboard-home hide" id="dashboard-home">
+            <h1>Welcome to <span class="text-bold">Your Dashboard</span></h1>
+            <div class="welcome-screen hide" id="welcome-screen">
+               <div class="intro">
+                  <p>Notes you create will appear here</p>
+                  <p>Currently you have no notes, so why don't we fix that?</p>
+                  <p>
+                     Click on the
+                     <span class="text-bold">Create New</span> button to start
+                     writing
+                  </p>
+               </div>
+               <!-- <button id="create-new-btn">Create New +</button> -->
+               <button>Create New +</button>
+            </div>
+            <div class="notes-overview hide" id="notes-overview">
+               <button>Create New +</button>
+               <p>Here are the notes you currently have saved</p>
+               <ul id="overview-list">
+                  <!-- <li>Movies to Watch <span>3</span></li>
+                  <li>Anime <span>59</span></li>
+                  <li>Music <span>13</span></li> -->
+               </ul>
+            </div>
+         </div>
+
+         <!-- Dashboard: Notes -->
+         <div class="dashboard-notes hide" id="dashboard-notes">
+            <h1>Welcome to <span class="text-bold">Your Notes</span></h1>
+            <div class="notes-container">
+               <div class="heading" id="heading">
+                  <h3 id="notes-title" class="notes-title">New notes</h3>
+                  <small class="text-bold">Error Message</small>
+               </div>
+               <div>
+                  <form id="rename-title-form">
+                     <input id="rename-input" type="text" placeholder="Title" />
+                     <button id="rename-button">Rename</button>
+                  </form>
+               </div>
+               <div>
+                  <form id="write-notes-form">
+                     <input id="todo-input" type="text" placeholder="Note" />
+                     <button id="todo-button">Write</button>
+                  </form>
+               </div>
+               <div class="todo-container">
+                  <ul id="todo-list" class="todo-list">
+                     <!-- <div class="todo">
+                        <li class="bullet">This is a test</li>
+                        <div class="notes-buttons">
+                           <div class="strike">
+                              <img src="static/img/strike.png" />
+                           </div>
+                           <div class="trash">
+                              <img src="static/img/trash.png" />
+                           </div>
+                        </div>
+                     </div> -->
+                  </ul>
+               </div>
+            </div>
+         </div>
+
+         <!-- Dashboard: Settings -->
+         <div class="dashboard-settings hide" id="dashboard-settings">
+            <h1>Welcome to <span class="text-bold">Your Settings</span></h1>
+            <div class="settings-container">
+               <div class="heading" id="heading">
+                  <h3>
+                     Change <span class="text-bold">Your Settings</span>
+                  </h3>
+                  <small>Leaving password fields empty <span class="text-bold">won't</span> change your current password</small>
+               </div>
+               <form id="settings-form" novalidate>
+                  <div class="form-control">
+                     <label for="new-username">Username</label><br>
+                     <input
+                        id="new-username"
+                        type="text"
+                        placeholder="Current Username"
+                     /><br /><br />
+                     <img class="check" src="static/img/success_icon.png" />
+                     <img class="cross" src="static/img/error_icon.png" />
+                     <small>Error Message</small>
+                  </div>
+                  <div class="form-control">
+                     <label for="new-password">New Password</label><br />
+                     <input
+                        type="password"
+                        id="new-password"
+                        placeholder="new password"
+                     /><br /><br />
+                     <img class="check" src="static/img/success_icon.png" />
+                     <img class="cross" src="static/img/error_icon.png" />
+                     <small>Error Message</small>
+                  </div>
+                  <div class="form-control">
+                     <label for="conf-new-password">Confirm New Password</label><br />
+                     <input
+                        type="password"
+                        id="conf-new-password"
+                        placeholder="confirm new password"
+                     /><br /><br />
+                     <img class="check" src="static/img/success_icon.png" />
+                     <img class="cross" src="static/img/error_icon.png" />
+                     <small>Error Message</small>
+                  </div>
+                  <input type="submit" id="save-btn" value="Save & Close" />
+               </form>
          </div>
       </div>
    </body>
