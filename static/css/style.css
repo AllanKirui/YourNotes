@@ -403,8 +403,32 @@ small.text-bold {
    color: var(--secondary-color);
 }
 
+.dashboard .dashboard-home .notes-overview p {
+   margin-bottom: 20px;
+   text-align: center;
+   font-size: 16px;
+}
+
+.dashboard .dashboard-home .notes-overview li {
+   list-style: none;
+   margin-bottom: 10px;
+   background: url("/static/img/bullet2.png") no-repeat left;
+   padding-left: 25px;
+   cursor: pointer;
+}
+
+.dashboard .dashboard-home .notes-overview li:hover {
+   font-weight: bold;
+}
+
+.dashboard .dashboard-home .notes-overview li span {
+   color: var(--primary-color);
+   font-size: 15px;
+}
+
 /* Dashboard Notes */
 .dashboard .dashboard-notes {
+   margin-top: 33px;
    margin-left: 50%;
    transform: translateX(-50%);
 }
@@ -551,7 +575,7 @@ small.text-bold {
 
 /* Dashboard Settings */
 .dashboard .dashboard-settings {
-   margin-top: 35px;
+   margin-top: 33px;
    margin-left: 50%;
    transform: translateX(-50%);
 }

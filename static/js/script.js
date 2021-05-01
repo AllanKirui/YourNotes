@@ -25,7 +25,8 @@ const home_button = document.getElementById("dash-home");
 const settings_button = document.getElementById("dash-settings");
 const logout_button = document.getElementById("dash-logout");
 
-const heading = document.getElementById("heading");
+const heading = document.querySelector(".heading");
+// const title_el = document.getElementById("notes-title");
 const write_form = document.getElementById("write-notes-form");
 const settings_form = document.getElementById("settings-form");
 
@@ -37,6 +38,8 @@ register_button.addEventListener("click", () => {
 
    login_div.classList.add("hide");
    register_div.classList.remove("hide");
+
+   login_form.reset();
 
    // success_div.classList.add("hide");
 });
@@ -195,6 +198,7 @@ login_button.addEventListener("click", () => {
    register_div.classList.add("hide");
    login_div.classList.remove("hide");
 
+   register_form.reset();
    // success_div.classList.add("hide");
 });
 
@@ -218,7 +222,8 @@ home_button.addEventListener("click", (e) => {
    e.preventDefault();
    dashboard_notes.classList.add("hide");
    dashboard_settings.classList.add("hide");
-   show_dashboard(user_logged_in);
+   dashboard_home.classList.remove("hide");
+   // show_dashboard(user_logged_in);
 });
 
 settings_button.addEventListener("click", (e) => {
@@ -242,8 +247,8 @@ notes_overview_todos.addEventListener("click", (e) => {
    if (e.target.nodeName !== "LI") {
       return;
    }
-
-   show_notes(e.target.innerText);
+   // console.log("event target", e.target.firstChild.data);
+   show_notes(e.target.firstChild.data);
 });
 
 // Mark a notes item as completed
@@ -289,23 +294,26 @@ write_form.addEventListener("submit", (e) => {
 
    const notes_title = document.getElementById("notes-title").innerText;
    if (notes_title === "New notes") {
-      set_error_state(heading, "Please rename the notes title");
+      set_error_state(title_el, "Please rename the notes title");
       return;
    }
 
    // Store the content of the notes to the list
-   notes_list.notes.push({ content: notes_to_write, status: false });
+   // console.log("Notes list before adding anything", notes_list);
+   // console.log("Notes list before adding anything", notes_list.notes_content);
+   notes_list.notes_content.push({ content: notes_to_write, status: false });
    console.log("Notes list:", notes_list.notes);
 
    // Add notes to the todo list
    add_notes(notes_to_write);
    e.target.reset();
 
-   save_notes();
+   save_data();
 });
 
 // Define a function to write notes
 function add_notes(notes_to_write) {
+   const todo_list = document.getElementById("todo-list");
    const new_div = document.createElement("div");
    new_div.classList.add("todo");
 
@@ -332,25 +340,28 @@ function add_notes(notes_to_write) {
 }
 
 // Add functionality to rename notes
-const current_title = document.getElementById("notes-title");
-current_title.addEventListener("submit", (e) => {
+const rename_title_form = document.getElementById("rename-title-form");
+rename_title_form.addEventListener("submit", (e) => {
    e.preventDefault();
-   const new_notes_title = document.getElementById("notes-title").value;
+   const new_notes_title = document.getElementById("rename-input").value;
+   console.log("new_notes_title:", new_notes_title);
 
    if (new_notes_title === "") {
-      set_error_state(heading, "The notes title cannot be empty");
-   }
-
-   if (new_notes_title === "New notes") {
-      set_error_state(heading, "Please rename the notes title");
-   }
-
-   if (
+      set_error_state(title_el, "The notes title cannot be empty");
+   } else if (new_notes_title === "New notes") {
+      set_notes_rename_error(heading, "Please rename the notes title");
+      console.log("Execution enters here");
+   } else if (
       is_title_unique(new_notes_title) &&
       new_notes_title !== notes_list.notes_title
    ) {
       set_error_state(heading, "A notes title should be unique");
+   } else {
+      set_notes_rename_success(heading);
    }
+
+   // set_notes_rename_success(heading);
+   // Was setting notes rename error
 
    const current_notes_title = document.getElementById("notes-title");
    current_notes_title.innerText = new_notes_title;
@@ -368,7 +379,54 @@ current_title.addEventListener("submit", (e) => {
       notes_list.notes_title = new_notes_title;
    }
 
-   save_notes();
+   save_data();
+});
+
+// const rename_title_form = document.getElementById("rename-title-form");
+// rename_title_form.addEventListener("submit", (e) => {
+//    e.preventDefault();
+//    const new_notes_title = document.getElementById("notes-title").innerText;
+//    console.log("new_notes_title:", new_notes_title);
+
+//    if (new_notes_title === "") {
+//       set_error_state(title_el, "The notes title cannot be empty");
+//    }
+
+//    if (new_notes_title === "New notes") {
+//       set_error_state(title_el, "Please rename the notes title");
+//    }
+
+//    if (
+//       is_title_unique(new_notes_title) &&
+//       new_notes_title !== notes_list.notes_title
+//    ) {
+//       set_error_state(title_el, "A notes title should be unique");
+//    }
+
+//    const current_notes_title = document.getElementById("notes-title");
+//    current_notes_title.innerText = new_notes_title;
+
+//    // If user creates new notes, store it
+//    if (notes_list === null) {
+//       const new_notes = {
+//          notes_title: new_notes_title,
+//          notes_content: [],
+//       };
+
+//       user_logged_in.notes.push(new_notes);
+//       notes_list = new_notes;
+//    } else {
+//       notes_list.notes_title = new_notes_title;
+//    }
+
+//    save_data();
+// });
+
+// Add functionality to the create new button
+const create_new_btn = document.getElementById("create-new-btn");
+create_new_btn.addEventListener("click", (e) => {
+   e.preventDefault();
+   show_notes();
 });
 
 // E. Add functionality to the settings pages
@@ -436,7 +494,8 @@ function log_in_user(user) {
    // console.log(user.user.username);
    hide_divs();
    show_greeting(hour, user.user.username);
-   show_dashboard(user);
+   show_dashboard();
+   // show_dashboard(user);
 
    save_data();
 }
@@ -458,8 +517,9 @@ function is_user_valid(username, password) {
    for (const user of database_list) {
       if (user.user.username === username && user.user.password === password) {
          //   if (user.user.username === username && user.user.password === hashCode(password)) {
-         hideAllErrors();
-         loginUser(user);
+         // hideAllErrors();
+         login_form.reset();
+         log_in_user(user);
          return;
       }
    }
@@ -473,13 +533,14 @@ function is_user_valid(username, password) {
 
 // Define a function to show the notes the user chooses to see
 function show_notes(notes_title) {
+   console.log("Note title", notes_title);
    if (notes_title === undefined) {
       notes_title = "New notes";
    }
 
    show_dashboard_notes(notes_title);
-   dashboard_notes.getElementsByTagName("h3")[0].innerText = new_title;
-   dashboard_notes.getElementById("rename-input").value = new_title;
+   dashboard_notes.getElementsByTagName("h3")[0].innerText = notes_title;
+   dashboard_notes.querySelector("#rename-input").value = notes_title;
 }
 
 // Define a function to hide the login and register buttons
@@ -488,9 +549,10 @@ function show_home_huttons() {
 }
 
 // Define a function to show the dashboard once the user is logged in
-function show_dashboard(user) {
+// function show_dashboard(user) {
+function show_dashboard() {
    dashboard_div.classList.remove("hide");
-   console.log("Length of user notes list", user.notes.length);
+   // console.log("Length of user notes list", user.notes.length);
    // if (user.notes.length === 0) {
    //    dashboard_home.classList.remove("hide");
    //    welcome_screen.classList.remove("hide");
@@ -514,6 +576,7 @@ function show_dashboard(user) {
 // Define a function to show the create notes section of the dashboard
 function show_dashboard_notes(notes_title) {
    dashboard_notes.classList.remove("hide");
+   dashboard_home.classList.add("hide");
 
    sort_user_notes(notes_title);
 }
@@ -522,18 +585,19 @@ function show_dashboard_notes(notes_title) {
 function sort_user_notes(title) {
    for (const notes of user_logged_in.notes) {
       if (notes.notes_title === title) {
-         show_notes_content(notes.notes_content);
+         show_notes_contents(notes.notes_content);
          notes_list = notes;
          return;
       }
    }
 
-   show_notes_content(null);
+   show_notes_contents(null);
 }
 
 // Define a function that shows a notes contents
 function show_notes_contents(note_items) {
    const todo_list = document.getElementById("todo-list");
+   todo_list.innerHTML = "";
 
    //    const todoItemsUL = document.getElementById("todo-list-items");
    //   todoItemsUL.innerHTML = "";
@@ -556,12 +620,15 @@ function show_notes_contents(note_items) {
    // }
 
    for (const content of note_items) {
+      // console.log("Content to show", content);
+      // console.log("Content to show", content.content);
+      // console.log("Content to show", content);
       const new_div = document.createElement("div");
       new_div.classList.add("todo");
 
       const new_li = document.createElement("li");
       new_li.classList.add("bullet");
-      new_li.innerText = content.text;
+      new_li.innerText = content.content;
 
       const button_div = document.createElement("div");
       button_div.classList.add("notes-buttons");
@@ -654,6 +721,8 @@ function hide_greeting() {
 // Define a function that will show the error message and error state
 function set_error_state(input, message) {
    const control_el = input.parentElement;
+   // console.log("set error state:", input);
+   // console.log("set error state 2:", input.parentElement);
    const small_el = control_el.querySelector("small");
    small_el.innerText = message;
 
@@ -666,6 +735,19 @@ function set_success_state(input) {
 
    control_el.classList.remove("error");
    control_el.classList.add("success");
+}
+
+// Define a function to handle notes rename error#
+function set_notes_rename_error(el, message) {
+   const small_el = el.querySelector("small");
+   small_el.innerText = message;
+   small_el.classList.add("error");
+}
+
+function set_notes_rename_success(el) {
+   const small_el = el.querySelector("small");
+   small_el.style.visibility = "hidden";
+   small_el.classList.remove("error");
 }
 
 // Define a function that checks if email is valid
@@ -706,10 +788,13 @@ function show_notes_overview() {
 
    for (const notes of user_logged_in.notes) {
       const new_li = document.createElement("li");
-      new_li.innerText = notes.notes_title + " ";
+      // new_li.classList.add("bullet");
+      new_li.innerText = notes.notes_title;
 
       const new_span = document.createElement("span");
-      new_span.innerText = notes.notes_items.length;
+      new_span.classList.add("text-bold");
+      // new_span.innerText = notes.notes_items.length;
+      new_span.innerText = " " + notes.notes_content.length;
 
       new_li.appendChild(new_span);
       ul_el.appendChild(new_li);
@@ -745,3 +830,46 @@ function start_app() {
 
 // Call the function to start app
 start_app();
+
+database_list = [
+   {
+      user: {
+         first: "Nalla Will Jr",
+         username: "loudlick",
+         password: "yournotes", // password
+      },
+      notes: [
+         {
+            notes_title: "Chores list",
+            notes_content: [
+               {
+                  content:
+                     "Take out the trash, eat the food, learn to code and something like that",
+                  status: false,
+               },
+               {
+                  content: "Do the homework",
+                  status: true,
+               },
+            ],
+         },
+         {
+            notes_title: "TV Shows to binge",
+            notes_content: [
+               {
+                  content: "Lost",
+                  status: true,
+               },
+               {
+                  content: "Mad Men",
+                  status: false,
+               },
+               {
+                  content: "The Good Place",
+                  status: true,
+               },
+            ],
+         },
+      ],
+   },
+];
