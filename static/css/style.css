@@ -89,7 +89,7 @@ small.text-bold {
 }
 
 .greeting h1 {
-   margin-top: 10px;
+   margin-bottom: 10px;
    font-size: 20px;
    font-weight: 400;
 }
@@ -296,7 +296,7 @@ small.text-bold {
    min-height: 100%;
    background: #fff2d7;
    position: absolute;
-   top: 47%;
+   top: 48%;
    left: 50%;
    transform: translateX(-50%);
    display: flex;

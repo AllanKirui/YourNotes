@@ -225,7 +225,9 @@ home_button.addEventListener("click", (e) => {
    dashboard_notes.classList.add("hide");
    dashboard_settings.classList.add("hide");
    dashboard_home.classList.remove("hide");
-   // show_dashboard(user_logged_in);
+   // notes_overview.classList.add("hide");
+   hide_divs();
+   show_dashboard(user_logged_in);
 });
 
 settings_button.addEventListener("click", (e) => {
@@ -519,6 +521,7 @@ function is_user_valid(username, password) {
          // hideAllErrors();
          login_form.reset();
          log_in_user(user);
+         remove_login_error_state(error_div);
          return;
       }
    }
@@ -551,6 +554,7 @@ function show_home_huttons() {
 // function show_dashboard(user) {
 function show_dashboard() {
    dashboard_div.classList.remove("hide");
+   notes_overview.classList.remove("hide");
    // console.log("Length of user notes list", user.notes.length);
    // if (user.notes.length === 0) {
    //    dashboard_home.classList.remove("hide");
@@ -801,7 +805,7 @@ function show_notes_overview() {
    notes_overview.classList.remove("hide");
 
    const ul_el = document.getElementById("overview-list");
-   // ul_elL.innerHTML = "";
+   ul_el.innerHTML = "";
 
    for (const notes of user_logged_in.notes) {
       const new_li = document.createElement("li");
@@ -834,6 +838,7 @@ function hide_divs() {
    register_div.classList.add("hide");
    login_div.classList.add("hide");
    dashboard_div.classList.add("hide");
+   notes_overview.classList.add("hide");
    // dashboard_div.classList.add("hide");
    // listDiv.classList.add("hide");   CALL THIS NOTES DIV
    // settingsDiv.classList.add("hide");
