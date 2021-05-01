@@ -360,9 +360,6 @@ rename_title_form.addEventListener("submit", (e) => {
       set_notes_rename_success(heading);
    }
 
-   // set_notes_rename_success(heading);
-   // Was setting notes rename error
-
    const current_notes_title = document.getElementById("notes-title");
    current_notes_title.innerText = new_notes_title;
 
@@ -525,7 +522,7 @@ function is_user_valid(username, password) {
    }
 
    const error_div = document.getElementById("login-error");
-   set_error_state(
+   set_login_error_state(
       error_div,
       "Oops! No match found for the Username or Password"
    );
@@ -748,6 +745,14 @@ function set_notes_rename_success(el) {
    const small_el = el.querySelector("small");
    small_el.style.visibility = "hidden";
    small_el.classList.remove("error");
+}
+
+// Define a function to handle errors when an invalid user tries to log in
+function set_login_error_state(input, message) {
+   const small_el = input.querySelector("small");
+   small_el.innerText = message;
+
+   input.classList.add("error");
 }
 
 // Define a function that checks if email is valid
