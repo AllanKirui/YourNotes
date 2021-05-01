@@ -29,6 +29,7 @@ const heading = document.querySelector(".heading");
 // const title_el = document.getElementById("notes-title");
 const write_form = document.getElementById("write-notes-form");
 const settings_form = document.getElementById("settings-form");
+const error_div = document.getElementById("login-error");
 
 // A. Set up validation for registration form
 // Setup Event Listeners
@@ -40,6 +41,7 @@ register_button.addEventListener("click", () => {
    register_div.classList.remove("hide");
 
    login_form.reset();
+   remove_login_error_state(error_div);
 
    // success_div.classList.add("hide");
 });
@@ -521,7 +523,7 @@ function is_user_valid(username, password) {
       }
    }
 
-   const error_div = document.getElementById("login-error");
+   // const error_div = document.getElementById("login-error");
    set_login_error_state(
       error_div,
       "Oops! No match found for the Username or Password"
@@ -667,14 +669,19 @@ function save_data() {
 
 // Define a function to read data from localStorage
 function read_data() {
-   if (localStorage.getItem("database_list")) {
-      database_list = JSON.parse(localStorage.getItem("database_list"));
+   // if (localStorage.getItem("database_list")) {
+   //    database_list = JSON.parse(localStorage.getItem("database_list"));
+   // }
+   if (localStorage.getItem("Database")) {
+      database_list = JSON.parse(localStorage.getItem("Database"));
    }
 
-   if (localStorage.getItem("username_logged_in")) {
-      username_logged_in = JSON.parse(
-         localStorage.getItem("username_logged_in")
-      );
+   // if (localStorage.getItem("username_logged_in")) {
+   //    username_logged_in = JSON.parse(
+   //       localStorage.getItem("username_logged_in")
+   //    );
+   if (localStorage.getItem("Valid Users")) {
+      username_logged_in = JSON.parse(localStorage.getItem("Valid Users"));
 
       for (const user of database_list) {
          if (user.user.username === username_logged_in) {
@@ -753,6 +760,11 @@ function set_login_error_state(input, message) {
    small_el.innerText = message;
 
    input.classList.add("error");
+}
+
+// Define a function to remove login error
+function remove_login_error_state(input) {
+   input.classList.remove("error");
 }
 
 // Define a function that checks if email is valid
@@ -836,45 +848,47 @@ function start_app() {
 // Call the function to start app
 start_app();
 
-database_list = [
-   {
-      user: {
-         first: "Nalla Will Jr",
-         username: "loudlick",
-         password: "yournotes", // password
-      },
-      notes: [
-         {
-            notes_title: "Chores list",
-            notes_content: [
-               {
-                  content:
-                     "Take out the trash, eat the food, learn to code and something like that",
-                  status: false,
-               },
-               {
-                  content: "Do the homework",
-                  status: true,
-               },
-            ],
-         },
-         {
-            notes_title: "TV Shows to binge",
-            notes_content: [
-               {
-                  content: "Lost",
-                  status: true,
-               },
-               {
-                  content: "Mad Men",
-                  status: false,
-               },
-               {
-                  content: "The Good Place",
-                  status: true,
-               },
-            ],
-         },
-      ],
-   },
-];
+// localStorage.clear();
+
+// database_list = [
+//    {
+//       user: {
+//          first: "Nalla Will Jr",
+//          username: "loudlick",
+//          password: "yournotes", // password
+//       },
+//       notes: [
+//          {
+//             notes_title: "Chores list",
+//             notes_content: [
+//                {
+//                   content:
+//                      "Take out the trash, eat the food, learn to code and something like that",
+//                   status: false,
+//                },
+//                {
+//                   content: "Do the homework",
+//                   status: true,
+//                },
+//             ],
+//          },
+//          {
+//             notes_title: "TV Shows to binge",
+//             notes_content: [
+//                {
+//                   content: "Lost",
+//                   status: true,
+//                },
+//                {
+//                   content: "Mad Men",
+//                   status: false,
+//                },
+//                {
+//                   content: "The Good Place",
+//                   status: true,
+//                },
+//             ],
+//          },
+//       ],
+//    },
+// ];
