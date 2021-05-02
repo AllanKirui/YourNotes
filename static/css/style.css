@@ -83,7 +83,7 @@ small.text-bold {
    color: var(--secondary-color);
 }
 
-.active-button {
+.home-buttons .active-button {
    background-color: var(--primary-color) !important;
    color: var(--secondary-color);
 }
@@ -347,6 +347,14 @@ small.text-bold {
    transform: translateX(-50%);
 }
 
+.dashboard .nav .house:active,
+.dashboard .nav .gears:active,
+.dashboard .nav .exit:active,
+.dashboard .nav p:active {
+   transition: 0.5s ease;
+   transform: translate(-2px, -4px);
+}
+
 .dashboard .nav .house img,
 .dashboard .nav .gears img,
 .dashboard .nav .exit img {
@@ -397,7 +405,7 @@ small.text-bold {
 
 .dashboard .dashboard-home p {
    font-size: 16px;
-   line-height: 30px;
+   /* line-height: 30px; */
 }
 
 .dashboard .dashboard-home .intro {
@@ -405,8 +413,8 @@ small.text-bold {
    text-align: center;
 }
 
-.dashboard .dashboard-home .welcome-screen button {
-   margin-top: 50px;
+.dashboard .dashboard-home .notes-overview button {
+   margin: 20px auto;
    width: 35%;
    height: 32px;
    border: 1px solid var(--primary-color);
@@ -415,15 +423,15 @@ small.text-bold {
    font-size: 16px;
    font-weight: 500;
    background-color: #fff2d7;
-   position: absolute;
+   /* position: absolute;
    left: 50%;
-   transform: translateX(-50%);
+   transform: translateX(-50%); */
    display: flex;
    justify-content: space-around;
    align-items: center;
 }
 
-.dashboard .dashboard-home button:hover {
+.dashboard .dashboard-home .notes-overview button:hover {
    transition: 0.3s ease-in;
    cursor: pointer;
    background-color: var(--primary-color);
