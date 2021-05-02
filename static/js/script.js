@@ -351,18 +351,18 @@ rename_title_form.addEventListener("submit", (e) => {
    console.log("new_notes_title:", new_notes_title);
 
    if (new_notes_title === "") {
-      set_error_state(title_el, "The notes title cannot be empty");
+      set_notes_rename_error(heading, "The notes title cannot be empty");
+      return;
    } else if (new_notes_title === "New notes") {
       set_notes_rename_error(heading, "Please rename the notes title");
-      console.log("Execution enters here");
-   } else if (
-      is_title_unique(new_notes_title) &&
-      new_notes_title !== notes_list.notes_title
-   ) {
-      set_error_state(heading, "A notes title should be unique");
-   } else {
-      set_notes_rename_success(heading);
+      console.log("after returning, code enter into the second stmnt");
+      return;
+   } else if (is_title_unique(new_notes_title)) {
+      set_notes_rename_error(heading, "A notes title should be unique");
+      console.log("after returning, code enter into the third stmnt");
+      return;
    }
+   set_notes_rename_success(heading);
 
    const current_notes_title = document.getElementById("notes-title");
    current_notes_title.innerText = new_notes_title;
@@ -379,7 +379,7 @@ rename_title_form.addEventListener("submit", (e) => {
    } else {
       notes_list.notes_title = new_notes_title;
    }
-
+   console.log("notes_list2", notes_list);
    save_data();
 });
 
@@ -690,6 +690,7 @@ function read_data() {
       for (const user of database_list) {
          if (user.user.username === username_logged_in) {
             user_logged_in = user;
+            console.log("Retrieved from storage", user);
          }
       }
    }
@@ -824,6 +825,7 @@ function show_notes_overview() {
 
 // Define a function that checks if title of notes is unique
 function is_title_unique(title) {
+   console.log("Notes", user_logged_in.notes);
    for (const notes of user_logged_in.notes) {
       if (notes.notes_title === title) {
          return true;
