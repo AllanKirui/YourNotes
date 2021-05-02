@@ -189,6 +189,33 @@ small.text-bold {
    font-size: 14px;
    text-align: center;
    margin-top: 15px;
+   position: relative;
+}
+
+.register-div form span#login-span,
+.login-div form span#register-span {
+   cursor: pointer;
+   position: absolute;
+   right: 13%;
+}
+
+.login-div form span#register-span {
+   right: 9%;
+}
+
+.register-div form span#login-span::after,
+.login-div form span#register-span::after {
+   content: "";
+   width: 0%;
+   height: 2px;
+   background: var(--primary-color);
+   display: block;
+   transition: 0.5s;
+}
+
+.register-div form span#login-span:hover::after,
+.login-div form span#register-span:hover::after {
+   width: 100%;
 }
 
 /* Error Icons and Error Message */

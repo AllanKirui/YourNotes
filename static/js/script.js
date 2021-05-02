@@ -24,12 +24,17 @@ const login_form = document.getElementById("login-form");
 const home_button = document.getElementById("dash-home");
 const settings_button = document.getElementById("dash-settings");
 const logout_button = document.getElementById("dash-logout");
+const login_span = document.getElementById("login-span");
+const register_span = document.getElementById("register-span");
 
 const heading = document.querySelector(".heading");
 // const title_el = document.getElementById("notes-title");
 const write_form = document.getElementById("write-notes-form");
 const settings_form = document.getElementById("settings-form");
 const error_div = document.getElementById("login-error");
+
+const strike_button = document.querySelectorAll(".strike");
+const trash_button = document.querySelectorAll(".trash");
 
 // A. Set up validation for registration form
 // Setup Event Listeners
@@ -191,6 +196,16 @@ register_form.addEventListener("submit", function (e) {
    }
 });
 
+login_span.addEventListener("click", () => {
+   register_button.classList.remove("active-button");
+   login_button.classList.add("active-button");
+
+   register_div.classList.add("hide");
+   login_div.classList.remove("hide");
+
+   register_form.reset();
+});
+
 // B. Set up validation for login form
 // Setup event listeners
 login_button.addEventListener("click", () => {
@@ -216,6 +231,17 @@ login_form.addEventListener("submit", function (e) {
 
    login_button.classList.remove("active-button");
    is_user_valid(login_username_value, login_password_value);
+});
+
+register_span.addEventListener("click", () => {
+   login_button.classList.remove("active-button");
+   register_button.classList.add("active-button");
+
+   login_div.classList.add("hide");
+   register_div.classList.remove("hide");
+
+   login_form.reset();
+   remove_login_error_state(error_div);
 });
 
 // C. Add functionality to dashboard buttons
@@ -257,8 +283,9 @@ notes_overview_todos.addEventListener("click", (e) => {
 
 // Mark a notes item as completed
 const todo = document.querySelectorAll(".todo");
+console.log("Todo check", todo);
 for (let i = 0; i < todo.length; i++) {
-   strike_btn[i].addEventListener("click", () => {
+   strike_button[i].addEventListener("click", () => {
       todo[i].classList.toggle("completed");
 
       update_stored_notes();
@@ -269,9 +296,11 @@ for (let i = 0; i < todo.length; i++) {
 function update_stored_notes() {
    //new_notes_list/newselectedlist
    let new_notes_list = [];
+   console.log("todo:", todo);
 
    for (const notes of todo.querySelectorAll("li")) {
       // item/notes donestatus/is_compplete
+      console.log("Notes after hitting strike:", notes);
       let is_complete = notes.className === "completed" ? true : false;
 
       // updateditem/updated notes
