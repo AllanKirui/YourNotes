@@ -544,7 +544,7 @@ settings_form.addEventListener("submit", (e) => {
       // active_error = false;
    }
 
-   // Check if password 2 on register form is empty
+   // Check if password 2 on settings form is empty
    if (new_password_value !== "" && new_password2_value === "") {
       set_error_state(new_password2, "Password cannot be blank");
    } else if (new_password_value !== new_password2_value) {
@@ -552,7 +552,7 @@ settings_form.addEventListener("submit", (e) => {
    } else {
       set_success_state(new_password2);
       remove_states(new_password2);
-      user_logged_in.user.password = new_password2_value;
+      user_logged_in.user.password = encrypt(new_password2_value);
       save_data();
       clear_password_fields();
       // active_error = false;
@@ -571,14 +571,32 @@ function clear_password_fields() {
    document.getElementById("conf-new-password").value = "";
 }
 
-// F. Other functions called throughout the program
+// F. Hashing user passwords
+// Define a function that takes in a plain password and encrypts it
+function encrypt(password) {
+   let encryption = 0,
+      ch;
+   if (password.length === 0) {
+      return encryption;
+   }
+
+   for (let i = 0; i < password.length; i++) {
+      ch = password.charCodeAt(i);
+      encryption = (encryption << 5) - encryption + ch;
+      encryption |= 0;
+   }
+
+   return encryption;
+}
+
+// G. Other functions called throughout the program
 // Define a function to store the user to the local storage database
 function add_user(first, username, password) {
    const new_user = {
       user: {
          first: first,
          username: username,
-         password: password,
+         password: encrypt(password),
          // HASHING THE PASSWORD
          // password: hashCode(password),
       },
@@ -630,7 +648,10 @@ function log_out_user() {
 // Define a function to check if the user is in the database
 function is_user_valid(username, password) {
    for (const user of database_list) {
-      if (user.user.username === username && user.user.password === password) {
+      if (
+         user.user.username === username &&
+         user.user.password === encrypt(password)
+      ) {
          //   if (user.user.username === username && user.user.password === hashCode(password)) {
          // hideAllErrors();
          login_form.reset();

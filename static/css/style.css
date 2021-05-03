@@ -327,6 +327,7 @@ small.text-bold {
 }
 
 .loader p {
+   margin-top: 10px;
    font-size: 20px;
 }
 
