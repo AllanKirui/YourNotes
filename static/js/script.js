@@ -14,7 +14,7 @@ const dashboard_div = document.getElementById("dashboard-div");
 const dashboard_home = document.getElementById("dashboard-home");
 const dashboard_notes = document.getElementById("dashboard-notes");
 const dashboard_settings = document.getElementById("dashboard-settings");
-const welcome_screen = document.getElementById("welcome-screen");
+// const welcome_screen = document.getElementById("welcome-screen");
 const notes_overview = document.getElementById("notes-overview");
 
 const register_button = document.getElementById("register-btn");
@@ -190,7 +190,10 @@ register_form.addEventListener("submit", function (e) {
          reg_password2_value
       );
       add_to_valid_users(new_user);
-      log_in_user(new_user);
+      show_loading();
+      setTimeout(function () {
+         log_in_user(new_user);
+      }, 4000);
       register_button.classList.remove("active-button");
       register_form.reset();
    }
@@ -266,6 +269,7 @@ settings_button.addEventListener("click", (e) => {
 logout_button.addEventListener("click", (e) => {
    e.preventDefault();
    log_out_user();
+   show_exit_screen();
 });
 
 // D. Other main operations of the notes app
@@ -327,7 +331,7 @@ write_form.addEventListener("submit", (e) => {
 
    const notes_title = document.getElementById("notes-title").innerText;
    if (notes_title === "New notes") {
-      set_error_state(title_el, "Please rename the notes title");
+      set_error_state(heading, "Please rename the notes title");
       return;
    }
 
@@ -523,8 +527,11 @@ function log_in_user(user) {
    // console.log(user.user);
    // console.log(user.user.username);
    hide_divs();
-   show_greeting(hour, user.user.username);
-   show_dashboard();
+   show_loading();
+   setTimeout(function () {
+      show_greeting(hour, user.user.username);
+      show_dashboard();
+   }, 4000);
    // show_dashboard(user);
 
    save_data();
@@ -560,6 +567,26 @@ function is_user_valid(username, password) {
       error_div,
       "Oops! No match found for the Username or Password"
    );
+}
+
+// Define a function to show the loading screen
+function show_loading() {
+   const loading_screen = document.getElementById("loader");
+   loading_screen.classList.remove("hide");
+   setTimeout(function () {
+      loading_screen.classList.add("hide");
+   }, 4000);
+}
+
+// Define a function to show the exit screen
+function show_exit_screen() {
+   const exit_screen = document.getElementById("exit-loader");
+   exit_screen.classList.remove("hide");
+   home_buttons_div.classList.add("hide");
+   setTimeout(function () {
+      exit_screen.classList.add("hide");
+      home_buttons_div.classList.remove("hide");
+   }, 4000);
 }
 
 // Define a function to show the notes the user chooses to see

@@ -317,6 +317,34 @@ small.text-bold {
    padding-bottom: 20px;
 } */
 
+/* Loading screen */
+.loader {
+   position: absolute;
+   top: 60%;
+   left: 50%;
+   transform: translateX(-50%);
+   text-align: center;
+}
+
+.loader p {
+   font-size: 20px;
+}
+
+/* .loader p::after {
+   content: "\2026";
+   display: inline-block;
+   overflow: hidden;
+   vertical-align: bottom;
+   animation: dots steps(4, end) 1s infinite;
+   width: 0px;
+}
+
+@keyframes dots {
+   to {
+      width: 1.25em;
+   }
+} */
+
 /* Dashboard */
 .dashboard {
    width: 80%;
