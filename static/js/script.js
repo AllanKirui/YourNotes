@@ -131,6 +131,7 @@ register_form.addEventListener("submit", function (e) {
          reg_password,
          "Password cannot be less that 8 characters"
       );
+      active_error = true;
       // Check if is password is equal to the string password
    } else if (reg_password_value.toLowerCase() === "password") {
       set_error_state(reg_password, "Password cannot be password");
