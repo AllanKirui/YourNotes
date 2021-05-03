@@ -72,7 +72,7 @@ register_form.addEventListener("submit", function (e) {
    const checkbox_value = checkbox.checked;
    // console.log(this);
 
-   let active_error = true;
+   let active_error = false;
 
    // Check if first_name value is empty
    if (first_name_value === "") {
@@ -82,7 +82,7 @@ register_form.addEventListener("submit", function (e) {
    } else {
       set_success_state(first_name);
       remove_states(first_name);
-      active_error = false;
+      // active_error = false;
    }
 
    // Check if last_name value is empty
@@ -93,7 +93,7 @@ register_form.addEventListener("submit", function (e) {
    } else {
       set_success_state(last_name);
       remove_states(last_name);
-      active_error = false;
+      // active_error = false;
    }
 
    // Check if username on register form is empty
@@ -109,7 +109,7 @@ register_form.addEventListener("submit", function (e) {
    } else {
       set_success_state(reg_username);
       remove_states(reg_username);
-      active_error = false;
+      // active_error = false;
    }
 
    // Check if email on register form is empty
@@ -120,7 +120,7 @@ register_form.addEventListener("submit", function (e) {
    } else {
       set_success_state(reg_email);
       remove_states(reg_email);
-      active_error = false;
+      // active_error = false;
    }
 
    // Check if password 1 on register form is empty
@@ -137,7 +137,7 @@ register_form.addEventListener("submit", function (e) {
    } else {
       set_success_state(reg_password);
       remove_states(reg_password);
-      active_error = false;
+      // active_error = false;
    }
 
    // Check if password 2 on register form is empty
@@ -148,7 +148,7 @@ register_form.addEventListener("submit", function (e) {
    } else {
       set_success_state(reg_password2);
       remove_states(reg_password2);
-      active_error = false;
+      // active_error = false;
    }
 
    // Check if checkbox is ticked
@@ -157,7 +157,7 @@ register_form.addEventListener("submit", function (e) {
    } else {
       set_success_state(checkbox);
       remove_states(checkbox);
-      active_error = false;
+      // active_error = false;
    }
 
    // Check if user already exists
@@ -182,7 +182,8 @@ register_form.addEventListener("submit", function (e) {
       reg_password_value !== "" &&
       reg_password2_value !== undefined &&
       reg_password2_value !== "" &&
-      checkbox_value === true
+      checkbox_value === true &&
+      active_error === false
    ) {
       const new_user = add_user(
          first_name_value,
@@ -190,12 +191,11 @@ register_form.addEventListener("submit", function (e) {
          reg_password2_value
       );
       add_to_valid_users(new_user);
-      show_loading();
-      setTimeout(function () {
-         log_in_user(new_user);
-      }, 4000);
       register_button.classList.remove("active-button");
       register_form.reset();
+      hide_divs();
+      show_loading();
+      log_in_user(new_user);
    }
 });
 
