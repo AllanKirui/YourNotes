@@ -36,6 +36,10 @@ const error_div = document.getElementById("login-error");
 const strike_button = document.querySelectorAll(".strike");
 const trash_button = document.querySelectorAll(".trash");
 
+// Get the current time
+const today = new Date();
+const hour = today.getHours();
+
 // A. Set up validation for registration form
 // Setup Event Listeners
 register_button.addEventListener("click", () => {
@@ -468,21 +472,98 @@ create_new_btn.addEventListener("click", (e) => {
 settings_form.addEventListener("submit", (e) => {
    e.preventDefault();
 
-   let new_username = document.getElementById("new-username").value;
+   let active_error = false;
+   let new_username = document.getElementById("new-username");
+   let new_password = document.getElementById("new-password");
+   let new_password2 = document.getElementById("conf-new-password");
+
+   let new_username_value = new_username.value.trim();
+   let new_password_value = new_password.value.trim();
+   let new_password2_value = new_password2.value.trim();
    // let new_password = document.getElementById("new-password").value;
-   let new_password = document.getElementById("conf-new-password").value;
 
-   user_logged_in.user.username = new_username;
-   user_logged_in.user.password = new_password;
-   username_logged_in = new_username;
+   // user_logged_in.user.username = new_username;
+   // username_logged_in = new_username;
 
-   if (new_password !== "") {
-      user_logged_in.user.password = new_password;
+   // user_logged_in.user.password = new_password;
+   // if (new_password !== "") {
+   //    user_logged_in.user.password = new_password;
+   // }
+
+   // Check if username on settings form is empty
+   if (new_username_value === "") {
+      set_error_state(new_username, "Username cannot be blank");
+   } else if (!isNaN(new_username_value)) {
+      set_error_state(new_username, "Username cannot be a number");
+   } else if (new_username_value.length < 3) {
+      set_error_state(
+         new_username,
+         "Username cannot be less than 3 characters"
+      );
+   } else {
+      set_success_state(new_username);
+      remove_states(new_username);
+      console.log("userloggedin.user.username:", user_logged_in.user.username);
+      console.log("newuesrname:", new_username_value);
+      // Check if user already exists
+      for (const user of database_list) {
+         if (user.user.username === new_username_value) {
+            set_error_state(new_username, "Username has already been taken");
+            active_error = true;
+         }
+      }
+
+      if (active_error === false) {
+         user_logged_in.user.username = new_username_value;
+         username_logged_in = new_username_value;
+         show_greeting(hour, new_username_value);
+         save_data();
+      }
+
+      // active_error = false;
    }
 
-   clear_password_fields();
+   // Check if password 1 on register form is empty
+   if (new_password_value === "") {
+      // set_error_state(new_password, "Password cannot be blank");
+      remove_states(new_password);
+      remove_states(new_password2);
+      return;
+   } else if (new_password_value !== "" && new_password_value.length < 8) {
+      set_error_state(
+         new_password,
+         "Password cannot be less that 8 characters"
+      );
+      // active_error = true;
+      // Check if is password is equal to the string password
+   } else if (new_password_value.toLowerCase() === "password") {
+      set_error_state(new_password, "Password cannot be password");
+   } else {
+      set_success_state(new_password);
+      remove_states(new_password);
+      // active_error = false;
+   }
 
-   save_data();
+   // Check if password 2 on register form is empty
+   if (new_password_value !== "" && new_password2_value === "") {
+      set_error_state(new_password2, "Password cannot be blank");
+   } else if (new_password_value !== new_password2_value) {
+      set_error_state(new_password2, "Passwords don't match");
+   } else {
+      set_success_state(new_password2);
+      remove_states(new_password2);
+      user_logged_in.user.password = new_password2_value;
+      save_data();
+      clear_password_fields();
+      // active_error = false;
+   }
+
+   // if (active_error === false) {
+   //    console.log("Wololoyaye");
+   //    user_logged_in.user.password = new_password2;
+   // }
+
+   // save_data();
 });
 
 function clear_password_fields() {
@@ -518,10 +599,6 @@ function check_user_info() {
 
 // Define a function that log's in the user
 function log_in_user(user) {
-   // Get the current time
-   const today = new Date();
-   const hour = today.getHours();
-
    user_logged_in = user;
    username_logged_in = user.user.username;
    // console.log(user);
@@ -842,7 +919,7 @@ function remove_states(input) {
    setTimeout(() => {
       control_el.classList.remove("error");
       control_el.classList.remove("success");
-      control_el.style.marginBottom = "0px";
+      // control_el.style.marginBottom = "0px";
    }, 1000);
 }
 
@@ -898,6 +975,7 @@ function hide_divs() {
    login_div.classList.add("hide");
    dashboard_div.classList.add("hide");
    notes_overview.classList.add("hide");
+   dashboard_settings.classList.add("hide");
    // dashboard_div.classList.add("hide");
    // listDiv.classList.add("hide");   CALL THIS NOTES DIV
    // settingsDiv.classList.add("hide");
