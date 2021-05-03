@@ -4,6 +4,7 @@ let user_logged_in = null;
 let username_logged_in = null;
 //notes_list previously called: selected list
 let notes_list = null;
+let created_notes_list = null;
 
 // Grab elements
 const home_buttons_div = document.getElementById("home-buttons");
@@ -256,7 +257,7 @@ register_span.addEventListener("click", () => {
 // Setup event listeners
 home_button.addEventListener("click", (e) => {
    e.preventDefault();
-   dashboard_notes.classList.add("hide");
+   // dashboard_notes.classList.add("hide");
    dashboard_settings.classList.add("hide");
    dashboard_home.classList.remove("hide");
    // notes_overview.classList.add("hide");
@@ -291,39 +292,39 @@ notes_overview_todos.addEventListener("click", (e) => {
 });
 
 // Mark a notes item as completed
-const todo = document.querySelectorAll(".todo");
-console.log("Todo check", todo);
-for (let i = 0; i < todo.length; i++) {
-   strike_button[i].addEventListener("click", () => {
-      todo[i].classList.toggle("completed");
+// const todo = document.querySelectorAll(".todo");
+// console.log("Todo check", todo);
+// for (let i = 0; i < todo.length; i++) {
+//    strike_button[i].addEventListener("click", () => {
+//       todo[i].classList.toggle("completed");
 
-      update_stored_notes();
-   });
-}
+//       update_stored_notes();
+//    });
+// }
 
 // Define a function that updates the notes stored in local storage
-function update_stored_notes() {
-   //new_notes_list/newselectedlist
-   let new_notes_list = [];
-   console.log("todo:", todo);
+// function update_stored_notes() {
+//    //new_notes_list/newselectedlist
+//    let new_notes_list = [];
+//    console.log("todo:", todo);
 
-   for (const notes of todo.querySelectorAll("li")) {
-      // item/notes donestatus/is_compplete
-      console.log("Notes after hitting strike:", notes);
-      let is_complete = notes.className === "completed" ? true : false;
+//    for (const notes of todo.querySelectorAll("li")) {
+//       // item/notes donestatus/is_compplete
+//       console.log("Notes after hitting strike:", notes);
+//       let is_complete = notes.className === "completed" ? true : false;
 
-      // updateditem/updated notes
-      let updated_notes = {
-         content: notes.innerText,
-         status: is_complete,
-      };
+//       // updateditem/updated notes
+//       let updated_notes = {
+//          content: notes.innerText,
+//          status: is_complete,
+//       };
 
-      new_notes_list.push(updated_notes);
-   }
+//       new_notes_list.push(updated_notes);
+//    }
 
-   notes_list.notes = new_notes_list;
-   save_notes();
-}
+//    notes_list.notes = new_notes_list;
+//    save_notes();
+// }
 
 // Add notes to notes list
 write_form.addEventListener("submit", (e) => {
@@ -385,9 +386,19 @@ function add_notes(notes_to_write) {
 const rename_title_form = document.getElementById("rename-title-form");
 rename_title_form.addEventListener("submit", (e) => {
    e.preventDefault();
+
+   let stored_titles = [];
+
    const new_notes_title = document.getElementById("rename-input").value;
    console.log("new_notes_title:", new_notes_title);
 
+   // let stored_titles = [];
+   for (let i = 0; i < user_logged_in.notes.length; i++) {
+      stored_titles.push(user_logged_in.notes[i].notes_title);
+   }
+
+   console.log("List of titles:", stored_titles);
+   console.log(user_logged_in.notes);
    if (new_notes_title === "") {
       set_notes_rename_error(heading, "The notes title cannot be empty");
       return;
@@ -395,18 +406,30 @@ rename_title_form.addEventListener("submit", (e) => {
       set_notes_rename_error(heading, "Please rename the notes title");
       console.log("after returning, code enter into the second stmnt");
       return;
-   } else if (is_title_unique(new_notes_title)) {
+      // } else if (is_title_unique(new_notes_title)) {
+   } else if (stored_titles.indexOf(new_notes_title) !== -1) {
       set_notes_rename_error(heading, "A notes title should be unique");
       console.log("after returning, code enter into the third stmnt");
       return;
+   } //else {
+   //    for (const notes of user_logged_in.notes) {
+   //       console.log("Notes.notes_title:", notes.notes_title);
+   //       if (notes.notes_title === new_notes_title) {
+   //          set_notes_rename_error(heading, "A notes title should be unique");
+   //          return true;
+   //       }
+   //       return false;
+   //    }
+   // }
+   else {
+      set_notes_rename_success(heading);
    }
-   set_notes_rename_success(heading);
 
    const current_notes_title = document.getElementById("notes-title");
    current_notes_title.innerText = new_notes_title;
 
    // If user creates new notes, store it
-   if (notes_list === null) {
+   if (created_notes_list === null) {
       const new_notes = {
          notes_title: new_notes_title,
          notes_content: [],
@@ -466,6 +489,7 @@ const create_new_btn = document.getElementById("create-new-btn");
 create_new_btn.addEventListener("click", (e) => {
    e.preventDefault();
    show_notes();
+   created_notes_list = null;
 });
 
 // E. Add functionality to the settings pages
@@ -905,6 +929,7 @@ function set_success_state(input) {
 function set_notes_rename_error(el, message) {
    const small_el = el.querySelector("small");
    small_el.innerText = message;
+   small_el.style.visibility = "visible";
    small_el.classList.add("error");
 }
 
@@ -979,15 +1004,17 @@ function show_notes_overview() {
 }
 
 // Define a function that checks if title of notes is unique
-function is_title_unique(title) {
-   console.log("Notes", user_logged_in.notes);
-   for (const notes of user_logged_in.notes) {
-      if (notes.notes_title === title) {
-         return true;
-      }
-      return false;
-   }
-}
+// function is_title_unique(title) {
+//    console.log("Notes", user_logged_in.notes);
+//    console.log("title passed in:", title);
+//    for (const notes of user_logged_in.notes) {
+//       console.log("Notes.notes_title:", notes.notes_title);
+//       if (notes.notes_title === title) {
+//          return true;
+//       }
+//       return false;
+//    }
+// }
 
 // Define a function to hide divs
 function hide_divs() {
@@ -997,6 +1024,7 @@ function hide_divs() {
    dashboard_div.classList.add("hide");
    notes_overview.classList.add("hide");
    dashboard_settings.classList.add("hide");
+   dashboard_notes.classList.add("hide");
    // dashboard_div.classList.add("hide");
    // listDiv.classList.add("hide");   CALL THIS NOTES DIV
    // settingsDiv.classList.add("hide");
