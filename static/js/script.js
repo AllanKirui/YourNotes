@@ -278,7 +278,50 @@ logout_button.addEventListener("click", (e) => {
    show_exit_screen();
 });
 
-// D. Other main operations of the notes app
+// D. Add functionality to mark notes items as complete or to delete them
+const todo_list = document.getElementById("todo-list");
+todo_list.addEventListener("click", check_or_delete);
+
+function check_or_delete(e) {
+   const item_clicked = e.target;
+
+   if (item_clicked.classList[0] === "strike") {
+      const notes_item = item_clicked.parentElement.parentElement;
+      notes_item.classList.toggle("completed");
+   }
+
+   if (item_clicked.nodeName === "IMG") {
+      const notes_item = item_clicked.parentElement.parentElement.parentElement;
+      notes_item.classList.toggle("completed");
+   }
+
+   update_stored_notes();
+}
+
+// Define a function that updates the notes stored in localStorage
+function update_stored_notes() {
+   //new_notes_list/newselectedlist
+   let new_notes_list = [];
+
+   for (const notes of todo_list.querySelectorAll(".todo")) {
+      // item/notes donestatus/is_compplete
+      console.log("Notes after hitting strike:", notes);
+      let is_complete = notes.classList.contains("completed") ? true : false;
+
+      // updateditem/updated notes
+      let updated_notes = {
+         content: notes.innerText,
+         status: is_complete,
+      };
+
+      new_notes_list.push(updated_notes);
+   }
+
+   notes_list.notes_content = new_notes_list;
+   save_data();
+}
+
+// E. Other main operations of the notes app
 // Show notes when the user clicks on a title in the overview
 notes_overview_todos = dashboard_home.querySelector("ul");
 notes_overview_todos.addEventListener("click", (e) => {
@@ -492,7 +535,7 @@ create_new_btn.addEventListener("click", (e) => {
    created_notes_list = null;
 });
 
-// E. Add functionality to the settings pages
+// F. Add functionality to the settings pages
 settings_form.addEventListener("submit", (e) => {
    e.preventDefault();
 
@@ -802,7 +845,7 @@ function show_notes_contents(note_items) {
    // }
 
    for (const content of note_items) {
-      // console.log("Content to show", content);
+      console.log("Content to show", content);
       // console.log("Content to show", content.content);
       // console.log("Content to show", content);
       const new_div = document.createElement("div");
@@ -824,8 +867,8 @@ function show_notes_contents(note_items) {
       trash_div.innerHTML = '<img src="static/img/trash.png"/>';
 
       // Check if content was marked as complete
-      if (content.complete) {
-         new_li.classList.add("completed");
+      if (content.status) {
+         new_div.classList.add("completed");
       }
 
       button_div.appendChild(strike_div);
@@ -877,7 +920,7 @@ function read_data() {
 
 // Define a function to show the user a greeting based on the time of day
 function show_greeting(time, username) {
-   if (time > 18) {
+   if (time > 16) {
       greeting =
          '<h1>Good evening, <span class="text-bold">' +
          username +
