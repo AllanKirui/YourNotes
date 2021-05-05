@@ -290,12 +290,100 @@ function check_or_delete(e) {
       notes_item.classList.toggle("completed");
    }
 
-   if (item_clicked.nodeName === "IMG") {
+   if (item_clicked.classList[0] === "strike-img") {
       const notes_item = item_clicked.parentElement.parentElement.parentElement;
       notes_item.classList.toggle("completed");
    }
 
+   // if (item_clicked.classList[0] === "trash") {
+   //    console.log("Trash button clicked");
+   // }
+
    update_stored_notes();
+
+   if (
+      item_clicked.classList[0] === "trash" ||
+      item_clicked.classList[0] === "trash-img"
+   ) {
+      console.log("Trash image clicked");
+      console.log(notes_list);
+      const notes_item = item_clicked.parentElement.parentElement.parentElement;
+      console.log("Notes item", notes_item);
+      console.log(
+         "Content of item clicked on:",
+         notes_item.children[0].innerText
+      );
+      console.log("Notes item:", notes_item);
+      // console.log(
+      //    "Index of item clicked:",
+      //    notes_list.indexOf(notes_item.children[0].innerText)
+      // );
+      // for (const content of notes_list.notes_content) {
+      //    // console.log("Contents of notes_list", content);
+      //    if (content.content === notes_item.children[0].innerText) {
+      //       console.log("What you clicked on is in the list");
+      //       console.log(
+      //          "Index of item clicked on:",
+      //          notes_list.notes_content.indexOf(content)
+      //       );
+      //       notes_list.notes_content.splice(
+      //          notes_list.notes_content.indexOf(content),
+      //          1
+      //       );
+      //       console.log("Item removed");
+      //    }
+      //    console.log("After removing item:", notes_list.notes_content);
+      // }
+      console.log("notes item", notes_item);
+      notes_item.classList.add("falling-todo");
+      notes_item.addEventListener("transitionend", () => notes_item.remove());
+      remove_from_storage(notes_item);
+   }
+
+   // update_stored_notes();
+}
+
+// Define a function that deletes stored notes items
+function remove_from_storage(todo) {
+   let new_notes_list = [];
+
+   console.log("Before removing items,", notes_list.notes_content);
+   for (const content of notes_list.notes_content) {
+      // console.log("Contents of notes_list", content);
+      if (content.content === todo.children[0].innerText) {
+         console.log("What you clicked on is in the list");
+         console.log(
+            "Index of item clicked on:",
+            notes_list.notes_content.indexOf(content)
+         );
+         notes_list.notes_content.splice(
+            notes_list.notes_content.indexOf(content),
+            1
+         );
+         console.log("Item removed");
+         console.log("New value in notes list,", notes_list);
+         // console.log("content", content.parentElement);
+         // let is_complete = content.classList.contains("completed")
+         //    ? true
+         //    : false;
+
+         // let updated_notes = {
+         //    content: content.content,
+         //    status: is_complete,
+         // };
+
+         new_notes_list = notes_list.notes_content;
+         // new_notes_list.push(updated_notes);
+      }
+      // console.log("After removing item:", notes_list.notes_content);
+      // new_notes_list = notes_list.notes_content;
+   }
+   console.log("content of new list:", new_notes_list);
+   console.log("content of old list:", notes_list.notes_content);
+   // notes_list.notes_content = [];
+   notes_list.notes_content = new_notes_list;
+   console.log("notes list", notes_list);
+   save_data();
 }
 
 // Define a function that updates the notes stored in localStorage
@@ -305,7 +393,7 @@ function update_stored_notes() {
 
    for (const notes of todo_list.querySelectorAll(".todo")) {
       // item/notes donestatus/is_compplete
-      console.log("Notes after hitting strike:", notes);
+      // console.log("Notes after hitting strike:", notes);
       let is_complete = notes.classList.contains("completed") ? true : false;
 
       // updateditem/updated notes
@@ -388,7 +476,7 @@ write_form.addEventListener("submit", (e) => {
    // console.log("Notes list before adding anything", notes_list);
    // console.log("Notes list before adding anything", notes_list.notes_content);
    notes_list.notes_content.push({ content: notes_to_write, status: false });
-   console.log("Notes list:", notes_list.notes);
+   // console.log("Notes list:", notes_list.notes);
 
    // Add notes to the todo list
    add_notes(notes_to_write);
@@ -412,11 +500,12 @@ function add_notes(notes_to_write) {
 
    const strike_div = document.createElement("div");
    strike_div.classList.add("strike");
-   strike_div.innerHTML = '<img src="static/img/strike.png"/>';
+   strike_div.innerHTML =
+      '<img class="strike-img" src="static/img/strike.png"/>';
 
    const trash_div = document.createElement("div");
    trash_div.classList.add("trash");
-   trash_div.innerHTML = '<img src="static/img/trash.png"/>';
+   trash_div.innerHTML = '<img class="trash-img" src="static/img/trash.png"/>';
 
    button_div.appendChild(strike_div);
    button_div.appendChild(trash_div);
@@ -638,7 +727,7 @@ function clear_password_fields() {
    document.getElementById("conf-new-password").value = "";
 }
 
-// F. Hashing user passwords
+// G. Hashing user passwords
 // Define a function that takes in a plain password and encrypts it
 function encrypt(password) {
    let encryption = 0,
@@ -656,7 +745,7 @@ function encrypt(password) {
    return encryption;
 }
 
-// G. Other functions called throughout the program
+// H. Other functions called throughout the program
 // Define a function to store the user to the local storage database
 function add_user(first, username, password) {
    const new_user = {
@@ -845,7 +934,7 @@ function show_notes_contents(note_items) {
    // }
 
    for (const content of note_items) {
-      console.log("Content to show", content);
+      // console.log("Content to show", content);
       // console.log("Content to show", content.content);
       // console.log("Content to show", content);
       const new_div = document.createElement("div");
@@ -860,11 +949,13 @@ function show_notes_contents(note_items) {
 
       const strike_div = document.createElement("div");
       strike_div.classList.add("strike");
-      strike_div.innerHTML = '<img src="static/img/strike.png"/>';
+      strike_div.innerHTML =
+         '<img class="strike-img" src="static/img/strike.png"/>';
 
       const trash_div = document.createElement("div");
       trash_div.classList.add("trash");
-      trash_div.innerHTML = '<img src="static/img/trash.png"/>';
+      trash_div.innerHTML =
+         '<img class="trash-img" src="static/img/trash.png"/>';
 
       // Check if content was marked as complete
       if (content.status) {

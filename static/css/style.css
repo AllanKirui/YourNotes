@@ -562,6 +562,7 @@ small.text-bold {
    display: flex;
    justify-content: space-between;
    align-items: center;
+   transition: all 0.5s ease;
 }
 
 .notes-container .todo-container .todo-list li {
@@ -699,4 +700,9 @@ small.text-bold {
    cursor: pointer;
    background-color: var(--primary-color);
    color: var(--secondary-color);
+}
+
+.falling-todo {
+   transform: translateX(8rem) rotateZ(20deg);
+   opacity: 0;
 }
