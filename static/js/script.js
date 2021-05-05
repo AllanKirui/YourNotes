@@ -2,7 +2,6 @@
 let database_list = [];
 let user_logged_in = null;
 let username_logged_in = null;
-//notes_list previously called: selected list
 let notes_list = null;
 let created_notes_list = null;
 
@@ -15,7 +14,6 @@ const dashboard_div = document.getElementById("dashboard-div");
 const dashboard_home = document.getElementById("dashboard-home");
 const dashboard_notes = document.getElementById("dashboard-notes");
 const dashboard_settings = document.getElementById("dashboard-settings");
-// const welcome_screen = document.getElementById("welcome-screen");
 const notes_overview = document.getElementById("notes-overview");
 
 const register_button = document.getElementById("register-btn");
@@ -29,7 +27,6 @@ const login_span = document.getElementById("login-span");
 const register_span = document.getElementById("register-span");
 
 const heading = document.querySelector(".heading");
-// const title_el = document.getElementById("notes-title");
 const write_form = document.getElementById("write-notes-form");
 const settings_form = document.getElementById("settings-form");
 const error_div = document.getElementById("login-error");
@@ -37,12 +34,12 @@ const error_div = document.getElementById("login-error");
 const strike_button = document.querySelectorAll(".strike");
 const trash_button = document.querySelectorAll(".trash");
 
+const burger = document.querySelector(".burger");
+const nav = document.getElementById("nav");
+
 // Get the current time
 const today = new Date();
 const hour = today.getHours();
-
-const burger = document.querySelector(".burger");
-const nav = document.getElementById("nav");
 
 // A. Set up validation for registration form
 // Setup Event Listeners
@@ -55,8 +52,6 @@ register_button.addEventListener("click", () => {
 
    login_form.reset();
    remove_login_error_state(error_div);
-
-   // success_div.classList.add("hide");
 });
 
 register_form.addEventListener("submit", function (e) {
@@ -78,7 +73,6 @@ register_form.addEventListener("submit", function (e) {
    const reg_password_value = reg_password.value.trim();
    const reg_password2_value = reg_password2.value.trim();
    const checkbox_value = checkbox.checked;
-   // console.log(this);
 
    let active_error = false;
 
@@ -90,7 +84,6 @@ register_form.addEventListener("submit", function (e) {
    } else {
       set_success_state(first_name);
       remove_states(first_name);
-      // active_error = false;
    }
 
    // Check if last_name value is empty
@@ -101,7 +94,6 @@ register_form.addEventListener("submit", function (e) {
    } else {
       set_success_state(last_name);
       remove_states(last_name);
-      // active_error = false;
    }
 
    // Check if username on register form is empty
@@ -117,7 +109,6 @@ register_form.addEventListener("submit", function (e) {
    } else {
       set_success_state(reg_username);
       remove_states(reg_username);
-      // active_error = false;
    }
 
    // Check if email on register form is empty
@@ -128,7 +119,6 @@ register_form.addEventListener("submit", function (e) {
    } else {
       set_success_state(reg_email);
       remove_states(reg_email);
-      // active_error = false;
    }
 
    // Check if password 1 on register form is empty
@@ -146,7 +136,6 @@ register_form.addEventListener("submit", function (e) {
    } else {
       set_success_state(reg_password);
       remove_states(reg_password);
-      // active_error = false;
    }
 
    // Check if password 2 on register form is empty
@@ -157,7 +146,6 @@ register_form.addEventListener("submit", function (e) {
    } else {
       set_success_state(reg_password2);
       remove_states(reg_password2);
-      // active_error = false;
    }
 
    // Check if checkbox is ticked
@@ -166,7 +154,6 @@ register_form.addEventListener("submit", function (e) {
    } else {
       set_success_state(checkbox);
       remove_states(checkbox);
-      // active_error = false;
    }
 
    // Check if user already exists
@@ -228,7 +215,6 @@ login_button.addEventListener("click", () => {
    login_div.classList.remove("hide");
 
    register_form.reset();
-   // success_div.classList.add("hide");
 });
 
 login_form.addEventListener("submit", function (e) {
@@ -260,10 +246,10 @@ register_span.addEventListener("click", () => {
 // Setup event listeners
 home_button.addEventListener("click", (e) => {
    e.preventDefault();
-   // dashboard_notes.classList.add("hide");
+
    dashboard_settings.classList.add("hide");
    dashboard_home.classList.remove("hide");
-   // notes_overview.classList.add("hide");
+
    hide_divs();
    show_dashboard(user_logged_in);
    burger.classList.remove("active");
@@ -310,108 +296,46 @@ function check_or_delete(e) {
       notes_item.classList.toggle("completed");
    }
 
-   // if (item_clicked.classList[0] === "trash") {
-   //    console.log("Trash button clicked");
-   // }
-
    update_stored_notes();
 
    if (
       item_clicked.classList[0] === "trash" ||
       item_clicked.classList[0] === "trash-img"
    ) {
-      console.log("Trash image clicked");
-      console.log(notes_list);
       const notes_item = item_clicked.parentElement.parentElement.parentElement;
-      console.log("Notes item", notes_item);
-      console.log(
-         "Content of item clicked on:",
-         notes_item.children[0].innerText
-      );
-      console.log("Notes item:", notes_item);
-      // console.log(
-      //    "Index of item clicked:",
-      //    notes_list.indexOf(notes_item.children[0].innerText)
-      // );
-      // for (const content of notes_list.notes_content) {
-      //    // console.log("Contents of notes_list", content);
-      //    if (content.content === notes_item.children[0].innerText) {
-      //       console.log("What you clicked on is in the list");
-      //       console.log(
-      //          "Index of item clicked on:",
-      //          notes_list.notes_content.indexOf(content)
-      //       );
-      //       notes_list.notes_content.splice(
-      //          notes_list.notes_content.indexOf(content),
-      //          1
-      //       );
-      //       console.log("Item removed");
-      //    }
-      //    console.log("After removing item:", notes_list.notes_content);
-      // }
-      console.log("notes item", notes_item);
+
       notes_item.classList.add("falling-todo");
       notes_item.addEventListener("transitionend", () => notes_item.remove());
+
       remove_from_storage(notes_item);
    }
-
-   // update_stored_notes();
 }
 
 // Define a function that deletes stored notes items
 function remove_from_storage(todo) {
    let new_notes_list = [];
 
-   console.log("Before removing items,", notes_list.notes_content);
    for (const content of notes_list.notes_content) {
-      // console.log("Contents of notes_list", content);
       if (content.content === todo.children[0].innerText) {
-         console.log("What you clicked on is in the list");
-         console.log(
-            "Index of item clicked on:",
-            notes_list.notes_content.indexOf(content)
-         );
          notes_list.notes_content.splice(
             notes_list.notes_content.indexOf(content),
             1
          );
-         console.log("Item removed");
-         console.log("New value in notes list,", notes_list);
-         // console.log("content", content.parentElement);
-         // let is_complete = content.classList.contains("completed")
-         //    ? true
-         //    : false;
-
-         // let updated_notes = {
-         //    content: content.content,
-         //    status: is_complete,
-         // };
-
          new_notes_list = notes_list.notes_content;
-         // new_notes_list.push(updated_notes);
       }
-      // console.log("After removing item:", notes_list.notes_content);
-      // new_notes_list = notes_list.notes_content;
    }
-   console.log("content of new list:", new_notes_list);
-   console.log("content of old list:", notes_list.notes_content);
-   // notes_list.notes_content = [];
    notes_list.notes_content = new_notes_list;
-   console.log("notes list", notes_list);
+
    save_data();
 }
 
 // Define a function that updates the notes stored in localStorage
 function update_stored_notes() {
-   //new_notes_list/newselectedlist
    let new_notes_list = [];
 
    for (const notes of todo_list.querySelectorAll(".todo")) {
-      // item/notes donestatus/is_compplete
-      // console.log("Notes after hitting strike:", notes);
       let is_complete = notes.classList.contains("completed") ? true : false;
 
-      // updateditem/updated notes
       let updated_notes = {
          content: notes.innerText,
          status: is_complete,
@@ -433,44 +357,8 @@ notes_overview_todos.addEventListener("click", (e) => {
    if (e.target.nodeName !== "LI") {
       return;
    }
-   // console.log("event target", e.target.firstChild.data);
    show_notes(e.target.firstChild.data);
 });
-
-// Mark a notes item as completed
-// const todo = document.querySelectorAll(".todo");
-// console.log("Todo check", todo);
-// for (let i = 0; i < todo.length; i++) {
-//    strike_button[i].addEventListener("click", () => {
-//       todo[i].classList.toggle("completed");
-
-//       update_stored_notes();
-//    });
-// }
-
-// Define a function that updates the notes stored in local storage
-// function update_stored_notes() {
-//    //new_notes_list/newselectedlist
-//    let new_notes_list = [];
-//    console.log("todo:", todo);
-
-//    for (const notes of todo.querySelectorAll("li")) {
-//       // item/notes donestatus/is_compplete
-//       console.log("Notes after hitting strike:", notes);
-//       let is_complete = notes.className === "completed" ? true : false;
-
-//       // updateditem/updated notes
-//       let updated_notes = {
-//          content: notes.innerText,
-//          status: is_complete,
-//       };
-
-//       new_notes_list.push(updated_notes);
-//    }
-
-//    notes_list.notes = new_notes_list;
-//    save_notes();
-// }
 
 // Add notes to notes list
 write_form.addEventListener("submit", (e) => {
@@ -488,10 +376,7 @@ write_form.addEventListener("submit", (e) => {
    }
 
    // Store the content of the notes to the list
-   // console.log("Notes list before adding anything", notes_list);
-   // console.log("Notes list before adding anything", notes_list.notes_content);
    notes_list.notes_content.push({ content: notes_to_write, status: false });
-   // console.log("Notes list:", notes_list.notes);
 
    // Add notes to the todo list
    add_notes(notes_to_write);
@@ -537,38 +422,21 @@ rename_title_form.addEventListener("submit", (e) => {
    let stored_titles = [];
 
    const new_notes_title = document.getElementById("rename-input").value;
-   console.log("new_notes_title:", new_notes_title);
 
-   // let stored_titles = [];
    for (let i = 0; i < user_logged_in.notes.length; i++) {
       stored_titles.push(user_logged_in.notes[i].notes_title);
    }
 
-   console.log("List of titles:", stored_titles);
-   console.log(user_logged_in.notes);
    if (new_notes_title === "") {
       set_notes_rename_error(heading, "The notes title cannot be empty");
       return;
    } else if (new_notes_title === "New notes") {
       set_notes_rename_error(heading, "Please rename the notes title");
-      console.log("after returning, code enter into the second stmnt");
       return;
-      // } else if (is_title_unique(new_notes_title)) {
    } else if (stored_titles.indexOf(new_notes_title) !== -1) {
       set_notes_rename_error(heading, "A notes title should be unique");
-      console.log("after returning, code enter into the third stmnt");
       return;
-   } //else {
-   //    for (const notes of user_logged_in.notes) {
-   //       console.log("Notes.notes_title:", notes.notes_title);
-   //       if (notes.notes_title === new_notes_title) {
-   //          set_notes_rename_error(heading, "A notes title should be unique");
-   //          return true;
-   //       }
-   //       return false;
-   //    }
-   // }
-   else {
+   } else {
       set_notes_rename_success(heading);
    }
 
@@ -587,49 +455,8 @@ rename_title_form.addEventListener("submit", (e) => {
    } else {
       notes_list.notes_title = new_notes_title;
    }
-   console.log("notes_list2", notes_list);
    save_data();
 });
-
-// const rename_title_form = document.getElementById("rename-title-form");
-// rename_title_form.addEventListener("submit", (e) => {
-//    e.preventDefault();
-//    const new_notes_title = document.getElementById("notes-title").innerText;
-//    console.log("new_notes_title:", new_notes_title);
-
-//    if (new_notes_title === "") {
-//       set_error_state(title_el, "The notes title cannot be empty");
-//    }
-
-//    if (new_notes_title === "New notes") {
-//       set_error_state(title_el, "Please rename the notes title");
-//    }
-
-//    if (
-//       is_title_unique(new_notes_title) &&
-//       new_notes_title !== notes_list.notes_title
-//    ) {
-//       set_error_state(title_el, "A notes title should be unique");
-//    }
-
-//    const current_notes_title = document.getElementById("notes-title");
-//    current_notes_title.innerText = new_notes_title;
-
-//    // If user creates new notes, store it
-//    if (notes_list === null) {
-//       const new_notes = {
-//          notes_title: new_notes_title,
-//          notes_content: [],
-//       };
-
-//       user_logged_in.notes.push(new_notes);
-//       notes_list = new_notes;
-//    } else {
-//       notes_list.notes_title = new_notes_title;
-//    }
-
-//    save_data();
-// });
 
 // Add functionality to the create new button
 const create_new_btn = document.getElementById("create-new-btn");
@@ -651,15 +478,6 @@ settings_form.addEventListener("submit", (e) => {
    let new_username_value = new_username.value.trim();
    let new_password_value = new_password.value.trim();
    let new_password2_value = new_password2.value.trim();
-   // let new_password = document.getElementById("new-password").value;
-
-   // user_logged_in.user.username = new_username;
-   // username_logged_in = new_username;
-
-   // user_logged_in.user.password = new_password;
-   // if (new_password !== "") {
-   //    user_logged_in.user.password = new_password;
-   // }
 
    // Check if username on settings form is empty
    if (new_username_value === "") {
@@ -674,8 +492,7 @@ settings_form.addEventListener("submit", (e) => {
    } else {
       set_success_state(new_username);
       remove_states(new_username);
-      console.log("userloggedin.user.username:", user_logged_in.user.username);
-      console.log("newuesrname:", new_username_value);
+
       // Check if user already exists
       for (const user of database_list) {
          if (user.user.username === new_username_value) {
@@ -690,13 +507,10 @@ settings_form.addEventListener("submit", (e) => {
          show_greeting(hour, new_username_value);
          save_data();
       }
-
-      // active_error = false;
    }
 
    // Check if password 1 on register form is empty
    if (new_password_value === "") {
-      // set_error_state(new_password, "Password cannot be blank");
       remove_states(new_password);
       remove_states(new_password2);
       return;
@@ -705,14 +519,12 @@ settings_form.addEventListener("submit", (e) => {
          new_password,
          "Password cannot be less that 8 characters"
       );
-      // active_error = true;
       // Check if is password is equal to the string password
    } else if (new_password_value.toLowerCase() === "password") {
       set_error_state(new_password, "Password cannot be password");
    } else {
       set_success_state(new_password);
       remove_states(new_password);
-      // active_error = false;
    }
 
    // Check if password 2 on settings form is empty
@@ -726,15 +538,7 @@ settings_form.addEventListener("submit", (e) => {
       user_logged_in.user.password = encrypt(new_password2_value);
       save_data();
       clear_password_fields();
-      // active_error = false;
    }
-
-   // if (active_error === false) {
-   //    console.log("Wololoyaye");
-   //    user_logged_in.user.password = new_password2;
-   // }
-
-   // save_data();
 });
 
 function clear_password_fields() {
@@ -768,8 +572,6 @@ function add_user(first, username, password) {
          first: first,
          username: username,
          password: encrypt(password),
-         // HASHING THE PASSWORD
-         // password: hashCode(password),
       },
       notes: [],
    };
@@ -790,16 +592,12 @@ function check_user_info() {
 function log_in_user(user) {
    user_logged_in = user;
    username_logged_in = user.user.username;
-   // console.log(user);
-   // console.log(user.user);
-   // console.log(user.user.username);
    hide_divs();
    show_loading();
    setTimeout(function () {
       show_greeting(hour, user.user.username);
       show_dashboard();
    }, 4000);
-   // show_dashboard(user);
 
    save_data();
 }
@@ -823,8 +621,6 @@ function is_user_valid(username, password) {
          user.user.username === username &&
          user.user.password === encrypt(password)
       ) {
-         //   if (user.user.username === username && user.user.password === hashCode(password)) {
-         // hideAllErrors();
          login_form.reset();
          log_in_user(user);
          remove_login_error_state(error_div);
@@ -832,7 +628,6 @@ function is_user_valid(username, password) {
       }
    }
 
-   // const error_div = document.getElementById("login-error");
    set_login_error_state(
       error_div,
       "Oops! No match found for the Username or Password"
@@ -861,7 +656,6 @@ function show_exit_screen() {
 
 // Define a function to show the notes the user chooses to see
 function show_notes(notes_title) {
-   console.log("Note title", notes_title);
    if (notes_title === undefined) {
       notes_title = "New notes";
    }
@@ -877,29 +671,11 @@ function show_home_huttons() {
 }
 
 // Define a function to show the dashboard once the user is logged in
-// function show_dashboard(user) {
 function show_dashboard() {
    dashboard_div.classList.remove("hide");
    notes_overview.classList.remove("hide");
-   // console.log("Length of user notes list", user.notes.length);
-   // if (user.notes.length === 0) {
-   //    dashboard_home.classList.remove("hide");
-   //    welcome_screen.classList.remove("hide");
-   // }
+
    show_notes_overview();
-
-   //    const todoListUL = document.getElementById("dashboard-todo-lists");
-   //    todoListUL.innerHTML = "";
-
-   //    for (const list of user_logged_in.lists) {
-   //       const newListLI = document.createElement("li");
-   //       const newTitleA = document.createElement("a");
-   //       newTitleA.href = "#";
-   //       newTitleA.innerText = list.title;
-   //       newListLI.append(newTitleA);
-   //       newListLI.innerHTML += " (" + list.items.length + ")";
-   //       todoListUL.appendChild(newListLI);
-   //    }
 }
 
 // Define a function to show the create notes section of the dashboard
@@ -928,30 +704,11 @@ function show_notes_contents(note_items) {
    const todo_list = document.getElementById("todo-list");
    todo_list.innerHTML = "";
 
-   //    const todoItemsUL = document.getElementById("todo-list-items");
-   //   todoItemsUL.innerHTML = "";
-
-   //   if (items === null) {
-   //     return;
-   //   }
-
    if (note_items === null) {
       return;
    }
 
-   // for (const listItem of items) {
-   //    const newItem = document.createElement("li");
-   //    newItem.innerText = listItem.text;
-   //    if (listItem.done) {
-   //       newItem.classList.add("done");
-   //    }
-   //    todoItemsUL.append(newItem);
-   // }
-
    for (const content of note_items) {
-      // console.log("Content to show", content);
-      // console.log("Content to show", content.content);
-      // console.log("Content to show", content);
       const new_div = document.createElement("div");
       new_div.classList.add("todo");
 
@@ -1001,24 +758,16 @@ function save_data() {
 
 // Define a function to read data from localStorage
 function read_data() {
-   // if (localStorage.getItem("database_list")) {
-   //    database_list = JSON.parse(localStorage.getItem("database_list"));
-   // }
    if (localStorage.getItem("Database")) {
       database_list = JSON.parse(localStorage.getItem("Database"));
    }
 
-   // if (localStorage.getItem("username_logged_in")) {
-   //    username_logged_in = JSON.parse(
-   //       localStorage.getItem("username_logged_in")
-   //    );
    if (localStorage.getItem("Valid Users")) {
       username_logged_in = JSON.parse(localStorage.getItem("Valid Users"));
 
       for (const user of database_list) {
          if (user.user.username === username_logged_in) {
             user_logged_in = user;
-            console.log("Retrieved from storage", user);
          }
       }
    }
@@ -1058,8 +807,6 @@ function hide_greeting() {
 // Define a function that will show the error message and error state
 function set_error_state(input, message) {
    const control_el = input.parentElement;
-   // console.log("set error state:", input);
-   // console.log("set error state 2:", input.parentElement);
    const small_el = control_el.querySelector("small");
    small_el.innerText = message;
 
@@ -1114,14 +861,8 @@ function remove_states(input) {
    setTimeout(() => {
       control_el.classList.remove("error");
       control_el.classList.remove("success");
-      // control_el.style.marginBottom = "0px";
    }, 1000);
 }
-
-// Define a function to show the user a successful sign up message
-// function show_success_message() {
-//    success_div.classList.remove("hide");
-// }
 
 // Define a function that adds the user to the database
 function add_to_valid_users(user) {
@@ -1139,31 +880,16 @@ function show_notes_overview() {
 
    for (const notes of user_logged_in.notes) {
       const new_li = document.createElement("li");
-      // new_li.classList.add("bullet");
       new_li.innerText = notes.notes_title;
 
       const new_span = document.createElement("span");
       new_span.classList.add("text-bold");
-      // new_span.innerText = notes.notes_items.length;
       new_span.innerText = " " + notes.notes_content.length;
 
       new_li.appendChild(new_span);
       ul_el.appendChild(new_li);
    }
 }
-
-// Define a function that checks if title of notes is unique
-// function is_title_unique(title) {
-//    console.log("Notes", user_logged_in.notes);
-//    console.log("title passed in:", title);
-//    for (const notes of user_logged_in.notes) {
-//       console.log("Notes.notes_title:", notes.notes_title);
-//       if (notes.notes_title === title) {
-//          return true;
-//       }
-//       return false;
-//    }
-// }
 
 // Define a function to hide divs
 function hide_divs() {
@@ -1174,9 +900,6 @@ function hide_divs() {
    notes_overview.classList.add("hide");
    dashboard_settings.classList.add("hide");
    dashboard_notes.classList.add("hide");
-   // dashboard_div.classList.add("hide");
-   // listDiv.classList.add("hide");   CALL THIS NOTES DIV
-   // settingsDiv.classList.add("hide");
 }
 
 // Define a function to load the app
@@ -1187,48 +910,3 @@ function start_app() {
 
 // Call the function to start app
 start_app();
-
-// localStorage.clear();
-
-// database_list = [
-//    {
-//       user: {
-//          first: "Nalla Will Jr",
-//          username: "loudlick",
-//          password: "yournotes", // password
-//       },
-//       notes: [
-//          {
-//             notes_title: "Chores list",
-//             notes_content: [
-//                {
-//                   content:
-//                      "Take out the trash, eat the food, learn to code and something like that",
-//                   status: false,
-//                },
-//                {
-//                   content: "Do the homework",
-//                   status: true,
-//                },
-//             ],
-//          },
-//          {
-//             notes_title: "TV Shows to binge",
-//             notes_content: [
-//                {
-//                   content: "Lost",
-//                   status: true,
-//                },
-//                {
-//                   content: "Mad Men",
-//                   status: false,
-//                },
-//                {
-//                   content: "The Good Place",
-//                   status: true,
-//                },
-//             ],
-//          },
-//       ],
-//    },
-// ];
