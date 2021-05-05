@@ -192,11 +192,16 @@ small.text-bold {
    position: relative;
 }
 
+.register-div form p > span,
+.login-div form p > span {
+   display: flex;
+}
+
 .register-div form span#login-span,
 .login-div form span#register-span {
    cursor: pointer;
    position: absolute;
-   right: 13%;
+   left: 40%;
 }
 
 .login-div form span#register-span {
@@ -220,8 +225,9 @@ small.text-bold {
 
 /* Error Icons and Error Message */
 .form-control {
-   margin-bottom: 10px;
+   margin-bottom: 35px;
    position: relative;
+   background: teal;
 }
 
 .form-control img {
@@ -324,6 +330,7 @@ small.text-bold {
    left: 50%;
    transform: translateX(-50%);
    text-align: center;
+   width: 80%;
 }
 
 .loader p {
@@ -352,7 +359,7 @@ small.text-bold {
    min-height: 100%;
    background: #fff2d7;
    position: absolute;
-   top: 48%;
+   top: 50%;
    left: 50%;
    transform: translateX(-50%);
    display: flex;
@@ -418,10 +425,14 @@ small.text-bold {
 
 /* Dashboard Home */
 .dashboard .dashboard-home {
-   position: absolute;
+   /* position: absolute;
    top: 4%;
-   left: 50%;
+   left: 50%; */
+   margin-top: 33px;
+   margin-left: 50%;
    transform: translateX(-50%);
+   width: 100%;
+   /* background-color: crimson; */
 }
 
 .dashboard .dashboard-home h1,
@@ -495,12 +506,15 @@ small.text-bold {
    margin-top: 33px;
    margin-left: 50%;
    transform: translateX(-50%);
+   width: 100%;
+   background-color: burlywood;
 }
 
 .notes-container {
    margin: 20px auto;
    padding: 10px;
-   width: 40vw;
+   /* width: 40vw; */
+   background-color: teal;
 }
 
 .notes-container .heading small {
@@ -517,13 +531,13 @@ small.text-bold {
 }
 
 .notes-container form input {
-   width: 322px;
+   width: 100%;
    height: 32px;
    padding-left: 10px;
    border: none;
    outline: none;
    margin-bottom: 10px;
-   font-size: 14px;
+   font-size: 16px;
    background: #fef8ec;
    color: var(--primary-color);
 }
@@ -647,6 +661,7 @@ small.text-bold {
 
 .settings-container {
    margin-top: 20px;
+   background: lightgreen;
 }
 
 .settings-container .heading {
@@ -705,4 +720,244 @@ small.text-bold {
 .falling-todo {
    transform: translateX(8rem) rotateZ(20deg);
    opacity: 0;
+}
+
+.burger-container {
+   position: fixed;
+   top: 11px;
+   left: 11px;
+   background: var(--primary-color);
+   z-index: 20;
+   display: none;
+}
+
+.burger {
+   width: 35px;
+   height: 35px;
+   background: url(../img/ellipsis.png);
+   background-size: 20px;
+   background-position: center;
+   background-repeat: no-repeat;
+   cursor: pointer;
+   transition: 0.3s ease;
+}
+
+.burger.active {
+   background: url(../img/cross.png);
+   background-size: 15px;
+   background-position: center;
+   background-repeat: no-repeat;
+   transform: rotate(720deg);
+}
+
+/* .nav-active { */
+/* transform: translateX(0%); */
+/* display: block; */
+/* } */
+
+.dashboard .nav.nav-active {
+   display: block;
+   /* transition: all 0.5s ease-in; */
+}
+
+/* .burger img {
+   transition: 0.3s ease;
+}
+
+.burger.active img {
+   transform: rotate(-360deg);
+} */
+
+/* Media Queries */
+@media (max-width: 700px) {
+   body {
+      /* display: none; */
+      background: burlywood;
+   }
+
+   .burger-container {
+      display: block;
+   }
+
+   .menu-div {
+      background: teal;
+      width: 90%;
+      min-height: 30vh;
+   }
+
+   .logo img {
+      width: calc(100px - 5%);
+      margin-top: 10px;
+   }
+
+   .logo h1 {
+      font-size: 48px;
+   }
+
+   .logo p {
+      font-size: 15px;
+   }
+
+   .register-div,
+   .login-div {
+      width: 100%;
+   }
+
+   .register-div form,
+   .login-div form {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      background: yellow;
+   }
+
+   .register-div form input,
+   .login-div form input {
+      width: 100%;
+   }
+
+   .register-div form input,
+   .login-div form input {
+      width: 100%;
+   }
+
+   .register-div form input[type="submit"],
+   .login-div form input[type="submit"] {
+      width: 100%;
+   }
+
+   .register-div .input-50-first input,
+   .register-div .input-50-last input {
+      width: 100%;
+   }
+
+   .register-div form p,
+   .login-div form p {
+      background: red;
+   }
+
+   .form-control.checkbox-div small {
+      background: green;
+      left: 50%;
+      transform: translateX(-50%);
+   }
+
+   .loader p {
+      font-size: 18px;
+   }
+
+   .greeting h1 {
+      font-size: 18px;
+   }
+
+   .dashboard {
+      position: absolute;
+      top: 38%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      display: flex;
+   }
+
+   .dashboard .nav {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      height: 25%;
+      width: calc(100% - 20px);
+      background-color: var(--primary-color);
+      /* display: flex; */
+      /* flex-direction: column; */
+      /* align-items: center; */
+      /* opacity: 0; */
+      /* transform: translateX(8rem); */
+      /* transition: all 0.5s ease-in; */
+      z-index: 10;
+      display: none;
+   }
+
+   .dashboard .nav .house,
+   .dashboard .nav .gears,
+   .dashboard .nav .exit,
+   .dashboard .nav p {
+      position: absolute;
+      text-align: center;
+      cursor: pointer;
+      /* left: 50%;
+      transform: translateX(-50%); */
+      /* background: tomato; */
+   }
+
+   .dashboard .nav .house {
+      top: 50%;
+      left: 20%;
+      transform: translateY(-50%);
+   }
+
+   .dashboard .nav .gears {
+      top: 50%;
+      left: 47%;
+      transform: translateY(-50%);
+   }
+
+   .dashboard .nav .exit {
+      top: 50%;
+      left: 75%;
+      transform: translateY(-50%);
+   }
+
+   .dashboard .nav .house p,
+   .dashboard .nav .gears p,
+   .dashboard .nav .exit p {
+      /* visibility: visible; */
+      opacity: 1;
+   }
+
+   .dashboard .dashboard-home,
+   .dashboard .dashboard-notes,
+   .dashboard .dashboard-settings {
+      margin-top: 20px;
+      margin-left: 10%;
+      width: 100%;
+      transform: translateX(-6%);
+      background-color: tomato;
+   }
+
+   .dashboard .dashboard-home h1,
+   .dashboard .dashboard-notes h1,
+   .dashboard .dashboard-settings h1 {
+      font-size: calc(28px - 50%);
+      text-align: center;
+      width: 80%;
+      margin: auto;
+   }
+
+   /* .dashboard .dashboard-home .notes-overview button {
+      width: 35%;
+   } */
+
+   .dashboard .dashboard-home .notes-overview li {
+      margin-left: 10%;
+   }
+
+   /* END OF MEDIA QUERIES */
+}
+
+@media (max-width: 400px) {
+   .register-div form,
+   .login-div form {
+      position: absolute;
+      top: 55%;
+      width: 100%;
+   }
+
+   .dashboard {
+      top: calc(38% + 70px);
+   }
+
+   .dashboard .dashboard-home .notes-overview button {
+      width: 45%;
+   }
 }

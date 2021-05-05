@@ -41,6 +41,9 @@ const trash_button = document.querySelectorAll(".trash");
 const today = new Date();
 const hour = today.getHours();
 
+const burger = document.querySelector(".burger");
+const nav = document.getElementById("nav");
+
 // A. Set up validation for registration form
 // Setup Event Listeners
 register_button.addEventListener("click", () => {
@@ -263,6 +266,8 @@ home_button.addEventListener("click", (e) => {
    // notes_overview.classList.add("hide");
    hide_divs();
    show_dashboard(user_logged_in);
+   burger.classList.remove("active");
+   nav.classList.remove("nav-active");
 });
 
 settings_button.addEventListener("click", (e) => {
@@ -270,15 +275,25 @@ settings_button.addEventListener("click", (e) => {
    dashboard_home.classList.add("hide");
    dashboard_notes.classList.add("hide");
    show_user_settings();
+   burger.classList.remove("active");
+   nav.classList.remove("nav-active");
 });
 
 logout_button.addEventListener("click", (e) => {
    e.preventDefault();
    log_out_user();
    show_exit_screen();
+   burger.classList.remove("active");
+   nav.classList.remove("nav-active");
 });
 
-// D. Add functionality to mark notes items as complete or to delete them
+// D. Set up burger
+burger.addEventListener("click", () => {
+   burger.classList.toggle("active");
+   nav.classList.toggle("nav-active");
+});
+
+// E. Add functionality to mark notes items as complete or to delete them
 const todo_list = document.getElementById("todo-list");
 todo_list.addEventListener("click", check_or_delete);
 
@@ -409,7 +424,7 @@ function update_stored_notes() {
    save_data();
 }
 
-// E. Other main operations of the notes app
+// F. Other main operations of the notes app
 // Show notes when the user clicks on a title in the overview
 notes_overview_todos = dashboard_home.querySelector("ul");
 notes_overview_todos.addEventListener("click", (e) => {
@@ -624,7 +639,7 @@ create_new_btn.addEventListener("click", (e) => {
    created_notes_list = null;
 });
 
-// F. Add functionality to the settings pages
+// G. Add functionality to the settings pages
 settings_form.addEventListener("submit", (e) => {
    e.preventDefault();
 
@@ -727,7 +742,7 @@ function clear_password_fields() {
    document.getElementById("conf-new-password").value = "";
 }
 
-// G. Hashing user passwords
+// H. Hashing user passwords
 // Define a function that takes in a plain password and encrypts it
 function encrypt(password) {
    let encryption = 0,
@@ -745,7 +760,7 @@ function encrypt(password) {
    return encryption;
 }
 
-// H. Other functions called throughout the program
+// I. Other functions called throughout the program
 // Define a function to store the user to the local storage database
 function add_user(first, username, password) {
    const new_user = {
