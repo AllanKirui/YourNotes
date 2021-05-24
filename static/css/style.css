@@ -739,6 +739,7 @@ small.text-bold {
 @media (max-width: 700px) {
    .burger-container {
       display: block;
+      z-index: 11;
    }
 
    .menu-div {
