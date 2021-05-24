@@ -691,7 +691,7 @@ small.text-bold {
 .burger {
    width: 35px;
    height: 35px;
-   background: url(../img/ellipsis.png);
+   background: url(../img/ellipsis.svg);
    background-size: 20px;
    background-position: center;
    background-repeat: no-repeat;
@@ -700,7 +700,7 @@ small.text-bold {
 }
 
 .burger.active {
-   background: url(../img/cross.png);
+   background: url(../img/cross.svg);
    background-size: 15px;
    background-position: center;
    background-repeat: no-repeat;
@@ -775,6 +775,7 @@ small.text-bold {
    }
 
    .form-control.checkbox-div small {
+      width: 70%;
       left: 50%;
       transform: translateX(-50%);
    }

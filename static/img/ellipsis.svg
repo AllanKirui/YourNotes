@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="25"
+   height="5"
+   viewBox="0 0 6.6145832 1.3229167"
+   version="1.1"
+   id="svg1331"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
+   sodipodi:docname="ellipsis.svg">
+  <defs
+     id="defs1325" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="11.2"
+     inkscape:cx="10.607706"
+     inkscape:cy="3.4167536"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1267"
+     inkscape:window-height="728"
+     inkscape:window-x="52"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata1328">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g1110"
+       transform="translate(-275.49784,-909.44658)">
+      <circle
+         style="fill:#fef8ec;fill-opacity:1;stroke-width:0.0927631;stroke-linejoin:round"
+         id="path1090"
+         cx="276.15948"
+         cy="910.11475"
+         r="0.66145831" />
+      <circle
+         style="fill:#fef8ec;fill-opacity:1;stroke-width:0.0927631;stroke-linejoin:round"
+         id="circle1092"
+         cx="281.45114"
+         cy="910.11475"
+         r="0.66145831" />
+      <circle
+         style="fill:#fef8ec;fill-opacity:1;stroke-width:0.0927631;stroke-linejoin:round"
+         id="circle1094"
+         cx="278.80533"
+         cy="910.11475"
+         r="0.66145831" />
+    </g>
+  </g>
+</svg>
