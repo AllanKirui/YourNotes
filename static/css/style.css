@@ -15,7 +15,7 @@
 
 body {
    font-family: "Mulish", sans-serif;
-   background: #fff;
+   background: var(--secondary-color);
    color: var(--primary-color);
 }
 
