@@ -448,7 +448,7 @@ small.text-bold {
 .dashboard .dashboard-home .notes-overview li {
    list-style: none;
    margin-bottom: 10px;
-   list-style-image: url("/static/img/bullet.svg");
+   list-style-image: url("/static/img/bullet2.png");
    padding-left: 5px;
    /* background: url("/static/img/bullet.svg") no-repeat left;
    padding-left: 25px; */
