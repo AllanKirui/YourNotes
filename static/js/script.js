@@ -316,7 +316,7 @@ function remove_from_storage(todo) {
    let new_notes_list = [];
 
    for (const content of notes_list.notes_content) {
-      if (content.content === todo.children[0].innerText) {
+      if (content.content === todo.children[1].innerText) {
          notes_list.notes_content.splice(
             notes_list.notes_content.indexOf(content),
             1
@@ -357,7 +357,6 @@ notes_overview_todos.addEventListener("click", (e) => {
    if (e.target.nodeName !== "LI") {
       return;
    }
-   // show_notes(e.target.firstChild.data);
    show_notes(e.target.firstChild.data);
 });
 

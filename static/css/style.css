@@ -461,11 +461,6 @@ small.text-bold {
    margin-left: 10px;
    margin-bottom: 10px;
 
-   /* list-style-image: url("/static/img/bullet2.png"); */
-   /* padding-left: 50px; */
-   /* background: url("/static/img/bullet.svg") no-repeat left;
-   padding-left: 25px; */
-
    cursor: pointer;
 }
 
@@ -560,11 +555,9 @@ small.text-bold {
 
 .notes-container .todo-container .todo-list li {
    width: 82%;
-   /* width: 280px; */
    margin-left: 20px;
    font-size: 15px;
    padding: 5px;
-   /* list-style: none; */
    margin-left: 5px;
    white-space: nowrap;
    overflow: hidden;
@@ -578,10 +571,6 @@ small.text-bold {
 }
 
 .notes-container .todo-container .todo-list span.bullet {
-   /* /* background: url("/static/img/bullet2.png") no-repeat left; */
-   /* padding-left: 25px; */
-   /* list-style-image: url("/static/img/bullet.svg");
-   padding-left: 5px; */
    margin-top: 5px;
    margin-left: 5px;
 }
@@ -589,14 +578,6 @@ small.text-bold {
 .notes-container .todo-container .todo-list li::marker {
    overflow: visible;
 }
-
-/* .notes-container .todo-container .todo-list li::before {
-   content: url(/static/img/bullet2.png);
-   position: relative;
-   top: 3px;
-   margin-bottom: 10px;
-   margin-right: 7px;
-} */
 
 .completed {
    text-decoration: line-through;
@@ -714,6 +695,7 @@ small.text-bold {
 
 .falling-todo {
    transform: translateX(8rem) rotateZ(20deg);
+   transition: 0.3s ease;
    opacity: 0;
 }
 
