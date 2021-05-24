@@ -448,7 +448,7 @@ small.text-bold {
 .dashboard .dashboard-home .notes-overview li {
    list-style: none;
    margin-bottom: 10px;
-   background: url("/static/img/bullet2.png") no-repeat left;
+   background: url("/static/img/bullet.svg") no-repeat left;
    padding-left: 25px;
    cursor: pointer;
 }
@@ -556,7 +556,7 @@ small.text-bold {
 }
 
 .notes-container .todo-container .todo-list li.bullet {
-   background: url("/static/img/bullet2.png") no-repeat left;
+   background: url("/static/img/bullet.svg") no-repeat left;
    padding-left: 25px;
 }
 
