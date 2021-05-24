@@ -199,7 +199,15 @@ small.text-bold {
 .login-div form span#register-span {
    cursor: pointer;
    position: absolute;
-   left: 40%;
+   left: 50%;
+}
+
+.register-div form span#login-span {
+   transform: translateX(-50%);
+}
+
+.login-div form span#register-span {
+   transform: translateX(-20%);
 }
 
 .login-div form span#register-span {
@@ -763,7 +771,7 @@ small.text-bold {
 
    .register-div .input-50-first input,
    .register-div .input-50-last input {
-      width: 100%;
+      width: 97%;
    }
 
    .form-control.checkbox-div small {
@@ -863,7 +871,7 @@ small.text-bold {
    .register-div form,
    .login-div form {
       position: absolute;
-      top: 55%;
+      top: 48%;
       width: 100%;
    }
 
