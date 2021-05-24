@@ -712,8 +712,11 @@ function show_notes_contents(note_items) {
       const new_div = document.createElement("div");
       new_div.classList.add("todo");
 
+      const bullet_span = document.createElement("span");
+      bullet_span.classList.add("bullet");
+      bullet_span.innerHTML = `<img src="static/img/bullet.svg"/>`;
+
       const new_li = document.createElement("li");
-      new_li.classList.add("bullet");
       new_li.innerText = content.content;
 
       const button_div = document.createElement("div");
@@ -736,6 +739,7 @@ function show_notes_contents(note_items) {
 
       button_div.appendChild(strike_div);
       button_div.appendChild(trash_div);
+      new_div.appendChild(bullet_span);
       new_div.appendChild(new_li);
       new_div.appendChild(button_div);
       todo_list.appendChild(new_div);

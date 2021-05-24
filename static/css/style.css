@@ -15,7 +15,7 @@
 
 body {
    font-family: "Mulish", sans-serif;
-   background: #6495ed;
+   background: var(--secondary-color);
    color: var(--primary-color);
 }
 
@@ -558,24 +558,25 @@ small.text-bold {
    overflow: auto;
 }
 
-.notes-container .todo-container .todo-list li.bullet {
+.notes-container .todo-container .todo-list span.bullet {
    /* /* background: url("/static/img/bullet2.png") no-repeat left; */
    /* padding-left: 25px; */
    /* list-style-image: url("/static/img/bullet.svg");
    padding-left: 5px; */
+   margin-top: 5px;
 }
 
 .notes-container .todo-container .todo-list li::marker {
    overflow: visible;
 }
-.notes-container .todo-container .todo-list li::before {
+
+/* .notes-container .todo-container .todo-list li::before {
    content: url(/static/img/bullet2.png);
-   color: red;
    position: relative;
    top: 3px;
    margin-bottom: 10px;
    margin-right: 7px;
-}
+} */
 
 .completed {
    text-decoration: line-through;
