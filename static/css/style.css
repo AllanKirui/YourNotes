@@ -15,7 +15,7 @@
 
 body {
    font-family: "Mulish", sans-serif;
-   background: burlywood;
+   background: teal;
    color: var(--primary-color);
 }
 
@@ -33,7 +33,7 @@ small.text-bold {
    width: 80%;
    min-height: 40vh;
    margin-top: 50px;
-   position: relative;
+   position: absolute;
    left: 50%;
    transform: translateX(-50%);
    text-align: center;
@@ -99,7 +99,7 @@ small.text-bold {
 .login-div form {
    width: 370px;
    padding: 20px;
-   position: relative;
+   position: absolute;
    top: 50%;
    left: 50%;
    transform: translateX(-50%);
@@ -540,7 +540,8 @@ small.text-bold {
 }
 
 .notes-container .todo-container .todo-list li {
-   width: 82%;
+   /* width: 82%; */
+   width: 280px;
    margin-left: 20px;
    font-size: 15px;
    padding: 5px;
@@ -895,5 +896,9 @@ small.text-bold {
 
    .dashboard .dashboard-home .notes-overview button {
       width: 45%;
+   }
+
+   .notes-container .todo-container .todo-list .todo {
+      max-width: 282px;
    }
 }
