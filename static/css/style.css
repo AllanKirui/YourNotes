@@ -558,8 +558,10 @@ small.text-bold {
 }
 
 .notes-container .todo-container .todo-list li.bullet {
-   background: url("/static/img/bullet.svg") no-repeat left;
+   background: url("/static/img/bullet2.png") no-repeat left;
    padding-left: 25px;
+   /* list-style-image: url("/static/img/bullet.svg");
+   padding-left: 5px; */
 }
 
 .completed {

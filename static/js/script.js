@@ -401,11 +401,11 @@ function add_notes(notes_to_write) {
    const strike_div = document.createElement("div");
    strike_div.classList.add("strike");
    strike_div.innerHTML =
-      '<img class="strike-img" src="static/img/strike.png"/>';
+      '<img class="strike-img" src="static/img/strike.svg"/>';
 
    const trash_div = document.createElement("div");
    trash_div.classList.add("trash");
-   trash_div.innerHTML = '<img class="trash-img" src="static/img/trash.png"/>';
+   trash_div.innerHTML = '<img class="trash-img" src="static/img/trash.svg"/>';
 
    button_div.appendChild(strike_div);
    button_div.appendChild(trash_div);
@@ -722,12 +722,12 @@ function show_notes_contents(note_items) {
       const strike_div = document.createElement("div");
       strike_div.classList.add("strike");
       strike_div.innerHTML =
-         '<img class="strike-img" src="static/img/strike.png"/>';
+         '<img class="strike-img" src="static/img/strike.svg"/>';
 
       const trash_div = document.createElement("div");
       trash_div.classList.add("trash");
       trash_div.innerHTML =
-         '<img class="trash-img" src="static/img/trash.png"/>';
+         '<img class="trash-img" src="static/img/trash.svg"/>';
 
       // Check if content was marked as complete
       if (content.status) {
