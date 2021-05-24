@@ -8,12 +8,12 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="your_notes.svg"
-   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
    id="svg8"
    version="1.1"
-   viewBox="0 0 210 297"
-   height="1122.5197"
-   width="793.70081"
+   viewBox="0 0 5.2916665 5.3710416"
+   height="20.299999"
+   width="20"
    inkscape:export-filename="C:\Users\Nalla\Desktop\Your Notes\your_notes.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
@@ -52,19 +52,19 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.44"
-     inkscape:cx="1399.9629"
-     inkscape:cy="3436.4776"
+     inkscape:zoom="1.76"
+     inkscape:cx="-712.90067"
+     inkscape:cy="1910.1517"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      units="px"
-     inkscape:window-width="1366"
-     inkscape:window-height="706"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
+     inkscape:window-width="1267"
+     inkscape:window-height="728"
+     inkscape:window-x="26"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
      inkscape:snap-global="false"
      showguides="false" />
   <metadata
@@ -120,7 +120,7 @@
              id="path1714" />
           <polygon
              style="fill:#161719;fill-opacity:1"
-             points="39.933,289.989 26.124,284.458 23.551,290.571 37.361,296.103 "
+             points="26.124,284.458 23.551,290.571 37.361,296.103 39.933,289.989 "
              id="polygon1716" />
           <path
              style="fill:#161719;fill-opacity:1"
@@ -235,7 +235,7 @@
            style="fill:#161719;fill-opacity:1;stroke-width:0.264583">Login</tspan></text>
     </g>
     <rect
-       style="fill:#fef8ec;stroke:none;stroke-width:0.402966;stroke-linecap:round;stroke-linejoin:round;fill-opacity:1"
+       style="fill:#fef8ec;fill-opacity:1;stroke:none;stroke-width:0.402966;stroke-linecap:round;stroke-linejoin:round"
        id="rect10"
        width="361.42084"
        height="173.83125"
@@ -380,7 +380,7 @@
            id="path936" />
         <polygon
            style="fill:#161719;fill-opacity:1"
-           points="26.124,284.458 23.551,290.571 37.361,296.103 39.933,289.989 "
+           points="23.551,290.571 37.361,296.103 39.933,289.989 26.124,284.458 "
            id="polygon938" />
         <path
            style="fill:#161719;fill-opacity:1"
@@ -446,7 +446,7 @@
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16.9333px;font-family:Mulish;-inkscape-font-specification:'Mulish Bold';fill:#161719;fill-opacity:1;stroke-width:0.264583">Your Notes</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:Mulish;-inkscape-font-specification:'Mulish Italic';word-spacing:0px;stroke-width:0.264583;fill:#161719;fill-opacity:1;"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:1.25;font-family:Mulish;-inkscape-font-specification:'Mulish Italic';word-spacing:0px;fill:#161719;fill-opacity:1;stroke-width:0.264583"
        x="4.637393"
        y="442.61008"
        id="text1013"><tspan
@@ -454,7 +454,7 @@
          id="tspan1011"
          x="4.637393"
          y="442.61008"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:Mulish;-inkscape-font-specification:'Mulish Italic';stroke-width:0.264583;fill:#161719;fill-opacity:1;">put it down on digital paper</tspan></text>
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:Mulish;-inkscape-font-specification:'Mulish Italic';fill:#161719;fill-opacity:1;stroke-width:0.264583">put it down on digital paper</tspan></text>
     <rect
        style="fill:none;fill-opacity:1;stroke:#161719;stroke-width:0.250031;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect1015"
@@ -579,7 +579,7 @@
          style="fill:#fef8ec;fill-opacity:1;stroke-width:0.264583">Login</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:7.40833335px;line-height:1.25;font-family:Mulish;-inkscape-font-specification:Mulish;word-spacing:0px;stroke-width:0.264583;"
+       style="font-size:7.40833px;line-height:1.25;font-family:Mulish;-inkscape-font-specification:Mulish;word-spacing:0px;stroke-width:0.264583"
        x="-148.95567"
        y="371.06512"
        id="text1071"><tspan
@@ -587,7 +587,7 @@
          id="tspan1069"
          x="-148.95567"
          y="371.06512"
-         style="stroke-width:0.264583;font-size:7.40833335px;">Homepage</tspan></text>
+         style="font-size:7.40833px;stroke-width:0.264583">Homepage</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:4.23333px;line-height:1.25;font-family:Mulish;-inkscape-font-specification:Mulish;word-spacing:0px;fill:#fbf0da;fill-opacity:1;stroke-width:0.264583"
@@ -692,7 +692,7 @@
            id="path1117" />
         <polygon
            style="fill:#161719;fill-opacity:1"
-           points="26.124,284.458 23.551,290.571 37.361,296.103 39.933,289.989 "
+           points="23.551,290.571 37.361,296.103 39.933,289.989 26.124,284.458 "
            id="polygon1119" />
         <path
            style="fill:#161719;fill-opacity:1"
@@ -1053,7 +1053,7 @@
            id="path1327" />
         <polygon
            style="fill:#161719;fill-opacity:1"
-           points="23.551,290.571 37.361,296.103 39.933,289.989 26.124,284.458 "
+           points="37.361,296.103 39.933,289.989 26.124,284.458 23.551,290.571 "
            id="polygon1329" />
         <path
            style="fill:#161719;fill-opacity:1"
@@ -1422,7 +1422,7 @@
            id="path1541" />
         <polygon
            style="fill:#fef8ec;fill-opacity:1"
-           points="26.124,284.458 23.551,290.571 37.361,296.103 39.933,289.989 "
+           points="23.551,290.571 37.361,296.103 39.933,289.989 26.124,284.458 "
            id="polygon1543" />
         <path
            style="fill:#fef8ec;fill-opacity:1"
@@ -1503,7 +1503,7 @@
            id="path1089" />
         <polygon
            style="fill:#161719;fill-opacity:1"
-           points="23.551,290.571 37.361,296.103 39.933,289.989 26.124,284.458 "
+           points="37.361,296.103 39.933,289.989 26.124,284.458 23.551,290.571 "
            id="polygon1091" />
         <path
            style="fill:#161719;fill-opacity:1"
@@ -1596,7 +1596,7 @@
              id="path1186" />
           <polygon
              style="fill:#161719;fill-opacity:1"
-             points="39.933,289.989 26.124,284.458 23.551,290.571 37.361,296.103 "
+             points="26.124,284.458 23.551,290.571 37.361,296.103 39.933,289.989 "
              id="polygon1188" />
           <path
              style="fill:#161719;fill-opacity:1"
@@ -1718,7 +1718,7 @@
            id="path1144" />
         <polygon
            style="fill:#161719;fill-opacity:1"
-           points="37.361,296.103 39.933,289.989 26.124,284.458 23.551,290.571 "
+           points="39.933,289.989 26.124,284.458 23.551,290.571 37.361,296.103 "
            id="polygon1146" />
         <path
            style="fill:#161719;fill-opacity:1"
@@ -1872,7 +1872,7 @@
        y="1112.9646"
        ry="0.16227943" />
     <rect
-       style="fill:#fff2d7;stroke:none;stroke-width:0.047344;stroke-linecap:round;stroke-linejoin:round;fill-opacity:1"
+       style="fill:#fff2d7;fill-opacity:1;stroke:none;stroke-width:0.047344;stroke-linecap:round;stroke-linejoin:round"
        id="rect1248"
        width="49.987095"
        height="17.34911"
@@ -2009,7 +2009,7 @@
            id="path1807" />
         <polygon
            style="fill:#fef8ec;fill-opacity:1"
-           points="37.361,296.103 39.933,289.989 26.124,284.458 23.551,290.571 "
+           points="39.933,289.989 26.124,284.458 23.551,290.571 37.361,296.103 "
            id="polygon1809" />
         <path
            style="fill:#fef8ec;fill-opacity:1"
@@ -2291,7 +2291,7 @@
            id="path1351" />
         <polygon
            style="fill:#fef8ec;fill-opacity:1"
-           points="23.551,290.571 37.361,296.103 39.933,289.989 26.124,284.458 "
+           points="37.361,296.103 39.933,289.989 26.124,284.458 23.551,290.571 "
            id="polygon1353" />
         <path
            style="fill:#fef8ec;fill-opacity:1"
@@ -2578,7 +2578,7 @@
            id="path574" />
         <polygon
            style="fill:#161719;fill-opacity:1"
-           points="26.124,284.458 23.551,290.571 37.361,296.103 39.933,289.989 "
+           points="23.551,290.571 37.361,296.103 39.933,289.989 26.124,284.458 "
            id="polygon576" />
         <path
            style="fill:#161719;fill-opacity:1"
@@ -2933,7 +2933,7 @@
            id="path882" />
         <polygon
            style="fill:#fff2d7;fill-opacity:1"
-           points="23.83,4.275 21.168,4.275 21.179,7.503 23.83,9.752 "
+           points="21.168,4.275 21.179,7.503 23.83,9.752 23.83,4.275 "
            id="polygon884" />
       </g>
       <g
@@ -2999,7 +2999,7 @@
            id="path949" />
         <polygon
            style="fill:#fff2d7;fill-opacity:1"
-           points="21.179,7.503 23.83,9.752 23.83,4.275 21.168,4.275 "
+           points="23.83,9.752 23.83,4.275 21.168,4.275 21.179,7.503 "
            id="polygon951" />
       </g>
       <g
@@ -3194,7 +3194,7 @@
              id="path1931" />
           <polygon
              style="fill:#161719;fill-opacity:1"
-             points="37.361,296.103 39.933,289.989 26.124,284.458 23.551,290.571 "
+             points="39.933,289.989 26.124,284.458 23.551,290.571 37.361,296.103 "
              id="polygon1933" />
           <path
              style="fill:#161719;fill-opacity:1"
@@ -3497,7 +3497,7 @@
            id="path1030" />
         <polygon
            style="fill:#161719;fill-opacity:1"
-           points="37.361,296.103 39.933,289.989 26.124,284.458 23.551,290.571 "
+           points="39.933,289.989 26.124,284.458 23.551,290.571 37.361,296.103 "
            id="polygon1032" />
         <path
            style="fill:#161719;fill-opacity:1"
@@ -3611,7 +3611,7 @@
            id="path961" />
         <polygon
            style="fill:#161719;fill-opacity:1"
-           points="39.933,289.989 26.124,284.458 23.551,290.571 37.361,296.103 "
+           points="26.124,284.458 23.551,290.571 37.361,296.103 39.933,289.989 "
            id="polygon963" />
         <path
            style="fill:#161719;fill-opacity:1"
@@ -3779,7 +3779,7 @@
          id="path1245" />
       <polygon
          style="fill:#161719;fill-opacity:1"
-         points="37.361,296.103 39.933,289.989 26.124,284.458 23.551,290.571 "
+         points="39.933,289.989 26.124,284.458 23.551,290.571 37.361,296.103 "
          id="polygon1247"
          transform="matrix(0.04354441,0,0,0.04354441,473.43529,673.53004)" />
       <path
@@ -3810,7 +3810,7 @@
          id="path1320" />
       <polygon
          style="fill:#161719;fill-opacity:1"
-         points="39.933,289.989 26.124,284.458 23.551,290.571 37.361,296.103 "
+         points="26.124,284.458 23.551,290.571 37.361,296.103 39.933,289.989 "
          id="polygon1322"
          transform="matrix(0.04354441,0,0,0.04354441,499.03036,672.2462)" />
       <path
@@ -3842,7 +3842,7 @@
          id="path1332" />
       <polygon
          style="fill:#161719;fill-opacity:1"
-         points="37.361,296.103 39.933,289.989 26.124,284.458 23.551,290.571 "
+         points="39.933,289.989 26.124,284.458 23.551,290.571 37.361,296.103 "
          id="polygon1334"
          transform="matrix(0.04354441,0,0,0.04354441,550.13416,669.82585)" />
       <path
@@ -3874,7 +3874,7 @@
          id="path1344" />
       <polygon
          style="fill:#161719;fill-opacity:1"
-         points="26.124,284.458 23.551,290.571 37.361,296.103 39.933,289.989 "
+         points="23.551,290.571 37.361,296.103 39.933,289.989 26.124,284.458 "
          id="polygon1346"
          transform="matrix(0.04354441,0,0,0.04354441,524.60477,670.88419)" />
       <path
@@ -3909,7 +3909,7 @@
            id="path1451" />
         <polygon
            style="fill:#161719;fill-opacity:1"
-           points="39.933,289.989 26.124,284.458 23.551,290.571 37.361,296.103 "
+           points="26.124,284.458 23.551,290.571 37.361,296.103 39.933,289.989 "
            id="polygon1453"
            transform="matrix(0.04354441,0,0,0.04354441,493.5797,673.53004)" />
       </g>
@@ -3944,7 +3944,7 @@
            id="path1465" />
         <polygon
            style="fill:#161719;fill-opacity:1"
-           points="23.551,290.571 37.361,296.103 39.933,289.989 26.124,284.458 "
+           points="37.361,296.103 39.933,289.989 26.124,284.458 23.551,290.571 "
            id="polygon1467"
            transform="matrix(0.04354441,0,0,0.04354441,531.76389,673.53004)" />
       </g>
@@ -3979,7 +3979,7 @@
            id="path1479" />
         <polygon
            style="fill:#161719;fill-opacity:1"
-           points="23.551,290.571 37.361,296.103 39.933,289.989 26.124,284.458 "
+           points="37.361,296.103 39.933,289.989 26.124,284.458 23.551,290.571 "
            id="polygon1481"
            transform="matrix(0.04354441,0,0,0.04354441,566.34012,673.53004)" />
       </g>
@@ -4137,7 +4137,7 @@
            id="path1112" />
         <polygon
            style="fill:#161719;fill-opacity:1"
-           points="26.124,284.458 23.551,290.571 37.361,296.103 39.933,289.989 "
+           points="23.551,290.571 37.361,296.103 39.933,289.989 26.124,284.458 "
            id="polygon1114" />
         <path
            style="fill:#161719;fill-opacity:1"
@@ -4492,7 +4492,7 @@
            id="path1333" />
         <polygon
            style="fill:#fff2d7;fill-opacity:1"
-           points="23.83,4.275 21.168,4.275 21.179,7.503 23.83,9.752 "
+           points="21.168,4.275 21.179,7.503 23.83,9.752 23.83,4.275 "
            id="polygon1335" />
       </g>
       <g
@@ -4668,7 +4668,7 @@
              id="path1418" />
           <polygon
              style="fill:#161719;fill-opacity:1"
-             points="37.361,296.103 39.933,289.989 26.124,284.458 23.551,290.571 "
+             points="39.933,289.989 26.124,284.458 23.551,290.571 37.361,296.103 "
              id="polygon1420" />
           <path
              style="fill:#161719;fill-opacity:1"
@@ -5004,7 +5004,7 @@
              id="path3452" />
           <polygon
              style="fill:#161719;fill-opacity:1"
-             points="26.124,284.458 23.551,290.571 37.361,296.103 39.933,289.989 "
+             points="23.551,290.571 37.361,296.103 39.933,289.989 26.124,284.458 "
              id="polygon3454" />
           <path
              style="fill:#161719;fill-opacity:1"
@@ -5098,7 +5098,7 @@
              id="path3502" />
           <polygon
              style="fill:#161719;fill-opacity:1"
-             points="26.124,284.458 23.551,290.571 37.361,296.103 39.933,289.989 "
+             points="23.551,290.571 37.361,296.103 39.933,289.989 26.124,284.458 "
              id="polygon3504" />
           <path
              style="fill:#161719;fill-opacity:1"
@@ -5192,7 +5192,7 @@
              id="path3552" />
           <polygon
              style="fill:#161719;fill-opacity:1"
-             points="39.933,289.989 26.124,284.458 23.551,290.571 37.361,296.103 "
+             points="26.124,284.458 23.551,290.571 37.361,296.103 39.933,289.989 "
              id="polygon3554" />
           <path
              style="fill:#161719;fill-opacity:1"
@@ -5286,7 +5286,7 @@
              id="path939" />
           <polygon
              style="fill:#fef8ec;fill-opacity:1"
-             points="26.124,284.458 23.551,290.571 37.361,296.103 39.933,289.989 "
+             points="23.551,290.571 37.361,296.103 39.933,289.989 26.124,284.458 "
              id="polygon941" />
           <path
              style="fill:#fef8ec;fill-opacity:1"

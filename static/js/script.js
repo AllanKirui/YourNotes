@@ -357,6 +357,7 @@ notes_overview_todos.addEventListener("click", (e) => {
    if (e.target.nodeName !== "LI") {
       return;
    }
+   // show_notes(e.target.firstChild.data);
    show_notes(e.target.firstChild.data);
 });
 
@@ -391,8 +392,11 @@ function add_notes(notes_to_write) {
    const new_div = document.createElement("div");
    new_div.classList.add("todo");
 
+   const bullet_span = document.createElement("span");
+   bullet_span.classList.add("bullet");
+   bullet_span.innerHTML = `<img src="static/img/bullet.svg"/>`;
+
    const new_li = document.createElement("li");
-   new_li.classList.add("bullet");
    new_li.innerText = notes_to_write;
 
    const button_div = document.createElement("div");
@@ -409,6 +413,7 @@ function add_notes(notes_to_write) {
 
    button_div.appendChild(strike_div);
    button_div.appendChild(trash_div);
+   new_div.appendChild(bullet_span);
    new_div.appendChild(new_li);
    new_div.appendChild(button_div);
    todo_list.appendChild(new_div);
@@ -883,6 +888,13 @@ function show_notes_overview() {
    ul_el.innerHTML = "";
 
    for (const notes of user_logged_in.notes) {
+      const bullet_span = document.createElement("span");
+      bullet_span.classList.add("bullet");
+      bullet_span.innerHTML = `<img src="static/img/bullet.svg"/>`;
+
+      const new_div = document.createElement("div");
+      new_div.classList.add("overview-div");
+
       const new_li = document.createElement("li");
       new_li.innerText = notes.notes_title;
 
@@ -891,7 +903,9 @@ function show_notes_overview() {
       new_span.innerText = " " + notes.notes_content.length;
 
       new_li.appendChild(new_span);
-      ul_el.appendChild(new_li);
+      new_div.appendChild(bullet_span);
+      new_div.appendChild(new_li);
+      ul_el.appendChild(new_div);
    }
 }
 

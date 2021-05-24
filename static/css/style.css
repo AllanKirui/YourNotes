@@ -328,7 +328,7 @@ small.text-bold {
    min-height: 100%;
    background: #fff2d7;
    position: absolute;
-   top: 50%;
+   top: 55%;
    left: 50%;
    transform: translateX(-50%);
    display: flex;
@@ -445,16 +445,33 @@ small.text-bold {
    font-size: 16px;
 }
 
-.dashboard .dashboard-home .notes-overview li {
+.dashboard .dashboard-home .notes-overview div {
+   display: flex;
+}
+
+.dashboard .dashboard-home .notes-overview div img {
+   margin-top: 2px;
+   margin-left: 25px;
+}
+
+.dashboard .dashboard-home .notes-overview div li {
    list-style: none;
+   margin-left: 10px;
    margin-bottom: 10px;
-   list-style-image: url("/static/img/bullet2.png");
-   padding-left: 5px;
+
+   /* list-style-image: url("/static/img/bullet2.png"); */
+   /* padding-left: 50px; */
    /* background: url("/static/img/bullet.svg") no-repeat left;
    padding-left: 25px; */
+
    cursor: pointer;
 }
 
+.dashboard .dashboard-home .notes-overview li img {
+   position: relative;
+   top: 1px;
+   margin-right: 10px;
+}
 .dashboard .dashboard-home .notes-overview li:hover {
    font-weight: bold;
 }
@@ -540,8 +557,8 @@ small.text-bold {
 }
 
 .notes-container .todo-container .todo-list li {
-   /* width: 82%; */
-   width: 280px;
+   width: 82%;
+   /* width: 280px; */
    margin-left: 20px;
    font-size: 15px;
    padding: 5px;
@@ -564,6 +581,7 @@ small.text-bold {
    /* list-style-image: url("/static/img/bullet.svg");
    padding-left: 5px; */
    margin-top: 5px;
+   margin-left: 5px;
 }
 
 .notes-container .todo-container .todo-list li::marker {
@@ -878,7 +896,7 @@ small.text-bold {
    }
 
    .dashboard .dashboard-home .notes-overview li {
-      margin-left: 16%;
+      /* margin-left: 16%; */
    }
 
    .notes-container form input#rename-input {
