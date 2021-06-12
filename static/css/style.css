@@ -18,6 +18,7 @@ body {
    background: var(--secondary-color);
    color: var(--primary-color);
    position: relative;
+   height: 100vh;
 }
 
 span.text-bold,
@@ -34,7 +35,7 @@ small.text-bold {
    width: 80%;
    min-height: 40vh;
    margin-top: 50px;
-   position: fixed;
+   position: absolute;
    left: 50%;
    transform: translateX(-50%);
    text-align: center;
@@ -213,7 +214,7 @@ small.text-bold {
 .login-div form {
    width: 370px;
    padding: 20px;
-   position: fixed;
+   position: absolute;
    top: 50%;
    left: 50%;
    transform: translateX(-50%);
