@@ -675,10 +675,7 @@ function is_user_valid(username, password) {
       }
    }
 
-   set_login_error_state(
-      error_div,
-      "Oops! No match found for the Username or Password"
-   );
+   set_login_error_state(error_div, "Oops! Invalid Username or Password");
 }
 
 // Define a function to show the loading screen
