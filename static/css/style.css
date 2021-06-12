@@ -35,10 +35,11 @@ small.text-bold {
    width: 80%;
    min-height: 40vh;
    margin-top: 50px;
-   position: absolute;
+   position: relative;
    left: 50%;
    transform: translateX(-50%);
    text-align: center;
+   background: blanchedalmond;
 }
 
 .menu-div .logo {
@@ -214,10 +215,11 @@ small.text-bold {
 .login-div form {
    width: 370px;
    padding: 20px;
-   position: fixed;
-   top: 50%;
+   position: relative;
+   /* top: 50%; */
    left: 50%;
    transform: translateX(-50%);
+   background-color: teal;
 }
 
 .register-div form label,
@@ -859,7 +861,7 @@ small.text-bold {
 
    .menu-div {
       width: 90%;
-      min-height: 30vh;
+      height: 30vh;
    }
 
    .logo img {
@@ -880,14 +882,14 @@ small.text-bold {
       width: 100%;
    }
 
-   .register-div form,
-   .login-div form {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-   }
+   /* .register-div form,
+   .login-div form { */
+   /* position: relative; */
+   /* top: 40%; */
+   /* left: 50%;
+      transform: translateX(-50%); */
+   /* width: 80%; */
+   /* } */
 
    .login-div .login-error {
       width: 90%;
