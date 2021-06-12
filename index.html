@@ -145,140 +145,143 @@
 
          <div class="greeting hide" id="greeting"></div>
 
+         <!-- Homepage: Register -->
          <div class="register-div hide" id="register-div">
-         <form id="register-form" novalidate>
-            <!-- First and Last names -->
-            <div class="width-50">
-               <div class="form-control input-50-first">
-                  <label for="first-name">First Name</label><br />
+            <form id="register-form" novalidate>
+               <!-- First and Last names -->
+               <div class="width-50">
+                  <div class="form-control input-50-first">
+                     <label for="first-name">First Name</label><br />
+                     <input
+                        type="text"
+                        id="first-name"
+                        placeholder="first name"
+                     /><br />
+                     <img class="check" src="static/img/success_icon.png" />
+                     <img class="cross" src="static/img/error_icon.png" />
+                     <small class="text-bold">Error Message</small>
+                  </div>
+
+                  <div class="form-control input-50-last">
+                     <label for="last-name">Last Name</label><br />
+                     <input
+                        type="text"
+                        id="last-name"
+                        placeholder="last name"
+                     /><br />
+                     <img class="check" src="static/img/success_icon.png" />
+                     <img class="cross" src="static/img/error_icon.png" />
+                     <small class="text-bold">Error Message</small>
+                  </div>
+               </div>
+               <!-- Usename -->
+               <div class="form-control">
+                  <label for="username">Username</label><br />
                   <input
                      type="text"
-                     id="first-name"
-                     placeholder="first name"
+                     id="reg-username"
+                     placeholder="username"
                   /><br />
+                  <img class="check" src="static/img/success_icon.png" />
+                  <img class="cross" src="static/img/error_icon.png" />
+                  <small class="text-bold">Error Message</small>
+               </div>
+               <!-- Email -->
+               <div class="form-control">
+                  <label for="Email">Email</label><br />
+                  <input
+                     type="email"
+                     id="reg-email"
+                     placeholder="you@youremail.com"
+                  /><br />
+                  <img class="check" src="static/img/success_icon.png" />
+                  <img class="cross" src="static/img/error_icon.png" />
+                  <small class="text-bold">Error Message</small>
+               </div>
+               <!-- Passwords -->
+               <div class="width-50">
+                  <div class="form-control input-50-first" id="password-input">
+                     <label for="password">Password</label><br />
+                     <input
+                        type="password"
+                        id="reg-password"
+                        placeholder="password"
+                     /><br />
+                     <img class="check" src="static/img/success_icon.png" />
+                     <img class="cross" src="static/img/error_icon.png" />
+                     <small class="text-bold">Error Message</small>
+                  </div>
+                  <div class="form-control input-50-last">
+                     <label for="conf-password">Confirm</label><br />
+                     <input
+                        type="password"
+                        id="reg-password2"
+                        placeholder="confirm password"
+                     /><br />
+                     <img class="check" src="static/img/success_icon.png" />
+                     <img class="cross" src="static/img/error_icon.png" />
+                     <small class="text-bold">Error Message</small>
+                  </div>
+               </div>
+               <!-- Checkbox -->
+               <div class="form-control checkbox-div">
+                  <input type="checkbox" name="termsofuse" id="checkbox" />
+                  <label for="checkbox"
+                     >I agree to the
+                     <span class="text-bold">Terms of Use</span></label
+                  >
                   <img class="check" src="static/img/success_icon.png" />
                   <img class="cross" src="static/img/error_icon.png" />
                   <small class="text-bold">Error Message</small>
                </div>
 
-               <div class="form-control input-50-last">
-                  <label for="last-name">Last Name</label><br />
+               <br />
+               <!-- Submit -->
+               <input type="submit" id="submit-btn" value="Submit" />
+               <p>Already own an account? <span id="login-span" class="text-bold">Login</span></p>
+            </form>
+         </div>
+
+         <!-- Homepage: Login -->
+         <div class="login-div hide" id="login-div">
+            <form id="login-form" novalidate>
+               <!-- Username -->
+               <div class="form-control" id="login-username-input">
+                  <label for="username">Username</label><br />
                   <input
                      type="text"
-                     id="last-name"
-                     placeholder="last name"
+                     id="login-username"
+                     placeholder="username"
                   /><br />
-                  <img class="check" src="static/img/success_icon.png" />
-                  <img class="cross" src="static/img/error_icon.png" />
-                  <small class="text-bold">Error Message</small>
                </div>
-            </div>
-            <!-- Usename -->
-            <div class="form-control">
-               <label for="username">Username</label><br />
-               <input
-                  type="text"
-                  id="reg-username"
-                  placeholder="username"
-               /><br />
-               <img class="check" src="static/img/success_icon.png" />
-               <img class="cross" src="static/img/error_icon.png" />
-               <small class="text-bold">Error Message</small>
-            </div>
-            <!-- Email -->
-            <div class="form-control">
-               <label for="Email">Email</label><br />
-               <input
-                  type="email"
-                  id="reg-email"
-                  placeholder="you@youremail.com"
-               /><br />
-               <img class="check" src="static/img/success_icon.png" />
-               <img class="cross" src="static/img/error_icon.png" />
-               <small class="text-bold">Error Message</small>
-            </div>
-            <!-- Passwords -->
-            <div class="width-50">
-               <div class="form-control input-50-first" id="password-input">
+               <!-- Email -->
+               <div class="form-control" id="login-email-input">
                   <label for="password">Password</label><br />
                   <input
                      type="password"
-                     id="reg-password"
+                     id="login-password"
                      placeholder="password"
                   /><br />
-                  <img class="check" src="static/img/success_icon.png" />
-                  <img class="cross" src="static/img/error_icon.png" />
-                  <small class="text-bold">Error Message</small>
                </div>
-               <div class="form-control input-50-last">
-                  <label for="conf-password">Confirm</label><br />
-                  <input
-                     type="password"
-                     id="reg-password2"
-                     placeholder="confirm password"
-                  /><br />
-                  <img class="check" src="static/img/success_icon.png" />
+               <!-- Show error message -->
+               <div id="login-error" class="login-error">
                   <img class="cross" src="static/img/error_icon.png" />
-                  <small class="text-bold">Error Message</small>
+                  <small>Error Message</small>
                </div>
-            </div>
-            <!-- Checkbox -->
-            <div class="form-control checkbox-div">
-               <input type="checkbox" name="termsofuse" id="checkbox" />
-               <label for="checkbox"
-                  >I agree to the
-                  <span class="text-bold">Terms of Use</span></label
-               >
-               <img class="check" src="static/img/success_icon.png" />
-               <img class="cross" src="static/img/error_icon.png" />
-               <small class="text-bold">Error Message</small>
-            </div>
+   
+               <!-- Submit -->
+               <input type="submit" value="Login" />
+               <p>
+                  Don't have an account? <span id="register-span" class="text-bold">Register</span>
+               </p>
+            </form>
+         </div>
 
-            <br />
-            <!-- Submit -->
-            <input type="submit" id="submit-btn" value="Submit" />
-            <p>Already own an account? <span id="login-span" class="text-bold">Login</span></p>
-         </form>
-      </div>
       </div>
 
-      <!-- Homepage: Register -->
       
 
-      <!-- Homepage: Login -->
-      <div class="login-div hide" id="login-div">
-         <form id="login-form" novalidate>
-            <!-- Username -->
-            <div class="form-control" id="login-username-input">
-               <label for="username">Username</label><br />
-               <input
-                  type="text"
-                  id="login-username"
-                  placeholder="username"
-               /><br />
-            </div>
-            <!-- Email -->
-            <div class="form-control" id="login-email-input">
-               <label for="password">Password</label><br />
-               <input
-                  type="password"
-                  id="login-password"
-                  placeholder="password"
-               /><br />
-            </div>
-            <!-- Show error message -->
-            <div id="login-error" class="login-error">
-               <img class="cross" src="static/img/error_icon.png" />
-               <small>Error Message</small>
-            </div>
-
-            <!-- Submit -->
-            <input type="submit" value="Login" />
-            <p>
-               Don't have an account? <span id="register-span" class="text-bold">Register</span>
-            </p>
-         </form>
-      </div>
+      
 
       <!-- Loading Screen -->
       <div class="loader hide" id="loader">
