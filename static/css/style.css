@@ -38,6 +38,7 @@ small.text-bold {
    left: 50%;
    transform: translateX(-50%);
    text-align: center;
+   background-color: tomato;
 }
 
 .menu-div .logo {
@@ -209,6 +210,11 @@ small.text-bold {
 }
 
 /* Login and Registration Setup */
+@media (max-width: 400px) {
+   .register-div form {
+      margin-top: 120px;
+   }
+}
 .register-div form,
 .login-div form {
    width: 370px;
@@ -877,10 +883,10 @@ small.text-bold {
       width: 100%;
    }
 
-   .register-div form,
+   /* .register-div form,
    .login-div form {
       margin-top: 5px;
-   }
+   } */
 
    .login-div .login-error {
       width: 90%;
