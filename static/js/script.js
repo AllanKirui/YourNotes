@@ -40,6 +40,8 @@ let created_notes_list = null;
 
 // Grab elements
 const home_buttons_div = document.getElementById("home-buttons");
+const slider_div = document.getElementById("slide-container");
+const options_div = document.getElementById("options");
 const greeting_div = document.getElementById("greeting");
 const register_div = document.getElementById("register-div");
 const login_div = document.getElementById("login-div");
@@ -77,6 +79,9 @@ const hour = today.getHours();
 // A. Set up validation for registration form
 // Setup Event Listeners
 register_button.addEventListener("click", () => {
+   slider_div.classList.add("hide");
+   options_div.classList.add("hide");
+
    login_button.classList.remove("active-button");
    register_button.classList.add("active-button");
 
@@ -241,6 +246,11 @@ login_span.addEventListener("click", () => {
 // B. Set up validation for login form
 // Setup event listeners
 login_button.addEventListener("click", () => {
+   if (!slider_div.classList.contains("hide")) {
+      slider_div.classList.add("hide");
+      options_div.classList.add("hide");
+   }
+
    register_button.classList.remove("active-button");
    login_button.classList.add("active-button");
 
