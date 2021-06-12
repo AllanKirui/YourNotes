@@ -1,4 +1,37 @@
-// Initialize variables
+// Configure homepage carousel
+const utils = window.fizzyUIUtils;
+const slide_container = document.querySelector(".slide-container");
+const flkty = new Flickity(slide_container, {
+   // options
+   cellAlign: "center", // set alignment
+   wrapAround: true, // Infinite scroll
+   prevNextButtons: false, // Hide left & right buttons
+   pageDots: false, // Hide default page dots
+});
+
+// Customising dots
+const cellsButtonGroup = document.querySelector(".options");
+const cellsButtons = utils.makeArray(cellsButtonGroup.children);
+
+// update buttons on select
+flkty.on("select", function () {
+   const previousSelectedButton =
+      cellsButtonGroup.querySelector(".is-selected");
+   const selectedButton = cellsButtonGroup.children[flkty.selectedIndex];
+   previousSelectedButton.classList.remove("is-selected");
+   selectedButton.classList.add("is-selected");
+});
+
+// cell select
+cellsButtonGroup.addEventListener("click", function (event) {
+   if (!matchesSelector(event.target, ".dot")) {
+      return;
+   }
+   const index = cellsButtons.indexOf(event.target);
+   flkty.select(index);
+});
+
+// Initialize required variables
 let database_list = [];
 let user_logged_in = null;
 let username_logged_in = null;
