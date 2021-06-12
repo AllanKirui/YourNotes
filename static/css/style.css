@@ -33,7 +33,7 @@ small.text-bold {
    width: 80%;
    min-height: 40vh;
    margin-top: 50px;
-   position: absolute;
+   position: fixed;
    left: 50%;
    transform: translateX(-50%);
    text-align: center;
