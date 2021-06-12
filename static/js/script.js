@@ -79,8 +79,7 @@ const hour = today.getHours();
 // A. Set up validation for registration form
 // Setup Event Listeners
 register_button.addEventListener("click", () => {
-   slider_div.classList.add("hide");
-   options_div.classList.add("hide");
+   hide_carousel();
 
    login_button.classList.remove("active-button");
    register_button.classList.add("active-button");
@@ -247,8 +246,7 @@ login_span.addEventListener("click", () => {
 // Setup event listeners
 login_button.addEventListener("click", () => {
    if (!slider_div.classList.contains("hide")) {
-      slider_div.classList.add("hide");
-      options_div.classList.add("hide");
+      hide_carousel();
    }
 
    register_button.classList.remove("active-button");
@@ -612,6 +610,18 @@ function encrypt(password) {
 }
 
 // I. Other functions called throughout the program
+// Define a function to hide carousel
+function hide_carousel() {
+   slider_div.classList.add("hide");
+   options_div.classList.add("hide");
+}
+
+// Define a function to unhide carousel
+function unhide_carousel() {
+   slider_div.classList.remove("hide");
+   options_div.classList.remove("hide");
+}
+
 // Define a function to store the user to the local storage database
 function add_user(first, username, password) {
    const new_user = {
@@ -695,6 +705,7 @@ function show_exit_screen() {
    setTimeout(function () {
       exit_screen.classList.add("hide");
       home_buttons_div.classList.remove("hide");
+      unhide_carousel();
    }, 4000);
 }
 
