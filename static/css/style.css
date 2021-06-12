@@ -17,6 +17,7 @@ body {
    font-family: "Mulish", sans-serif;
    background: var(--secondary-color);
    color: var(--primary-color);
+   position: relative;
 }
 
 span.text-bold,
