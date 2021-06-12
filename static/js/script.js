@@ -650,6 +650,7 @@ function log_in_user(user) {
    user_logged_in = user;
    username_logged_in = user.user.username;
    hide_divs();
+   hide_carousel();
    show_loading();
    setTimeout(function () {
       show_greeting(hour, user.user.username);
@@ -705,7 +706,6 @@ function show_exit_screen() {
    setTimeout(function () {
       exit_screen.classList.add("hide");
       home_buttons_div.classList.remove("hide");
-      unhide_carousel();
    }, 4000);
 }
 
