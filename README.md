@@ -183,7 +183,8 @@ What's in view:
 -  Github - [Allan Kirui](https://www.github.com/AllanKirui)
 -  Instagram - [@nallawilljr](https://www.instagram.com/nallawilljr)
 
-## Acknowledgements
+## Acknowledgments
 
--  I can't thank enough the people who helped me, in one way or another, while I was working on the project. **Thank you**:
-   -  [Nelson Ombuya](https://www.github.com/nelsonombuya) has been a very long-time friend of mine. He helped me understand how to approach the project by building a better **code architecture** and writing better **logic**.
+I can't thank enough the people who helped me, in one way or another, while I was working on the project. **Thank you**:
+
+-  [Nelson Ombuya](https://www.github.com/nelsonombuya) has been a very long-time friend of mine. He helped me understand how to approach the project by building a better **code architecture** and writing better **logic**.
