@@ -188,3 +188,4 @@ What's in view:
 I can't thank enough the people who helped me, in one way or another, while I was working on the project. **Thank you**:
 
 -  [Nelson Ombuya](https://www.github.com/nelsonombuya) has been a very long-time friend of mine. He helped me understand how to approach the project by building a better **code architecture** and writing better **logic**.
+-  [Melissa Phillips](https://github.com/MelemiP) is new to my circle of friends. A stranger at the time I was working on this project, but her valuable feedback about the user experience made me think about **Your Notes** from a user's point of view. I re-designed the homepage of **Your Notes** to make it even more user friendly.
